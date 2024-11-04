@@ -1,0 +1,25 @@
+<header>
+  <div class="header-container">
+    <h1><a href="#">MyClothingBrand</a></h1>
+
+    <nav>
+      <ul class="header-navigation">
+        <li><a href="">Men</a></li>
+        <li><a href="">Women</a></li>
+        <li><a href="">Kids</a></li>
+        <li><a href="">Beauty</a></li>
+        <li><a href="">Create Product</a></li>
+        <li><a href="">Profile</a></li>
+      </ul>
+    </nav>
+
+    <div class="user-links">
+      @if(loggedIn){
+      <a href="#">Log Out</a>
+      }@else{
+      <a href="#">Login</a>
+      <a href="#">Register</a>
+      }
+    </div>
+  </div>
+</header>

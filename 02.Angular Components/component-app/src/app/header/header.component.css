@@ -1,0 +1,51 @@
+header {
+    background-color: rgb(214, 192, 179);
+    width: 100%;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: 0.3s;
+}
+
+a:hover{
+   color: white;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em 0;
+}
+
+.header-navigation{
+    list-style-type: none;
+    display: flex;
+    gap: 1em;
+    font-size: 2rem;
+}
+
+.header-navigation li {
+    border-right: 2px solid black;
+    padding-right: 1em;
+}
+
+.header-navigation li:last-child{
+    border-right: none;
+    
+}
+
+.user-links{
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.user-links a + a{
+    border-left: 2px solid black;
+    padding-left: 1em;
+
+}
