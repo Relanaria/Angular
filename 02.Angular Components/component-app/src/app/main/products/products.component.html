@@ -1,0 +1,18 @@
+<div class="products-container">
+    <h1>Most Sold products</h1>
+    <div class="products-wrapper">
+        @for (product of products; track $index) {
+            <div class="product-card">
+                <div class="img-wrapper">
+                    <a href="#">
+                        <img class="product-img" src={{product.imgURL}} alt="Clothe Img">
+                    </a>
+                </div>
+                <a href="#">
+                    <h2>{{product.title}}</h2>
+                </a>
+                <p>{{product.price}}$</p>
+            </div>
+        }
+    </div>
+</div>

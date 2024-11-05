@@ -4,12 +4,14 @@
 
     <nav>
       <ul class="header-navigation">
-        <li><a href="">Men</a></li>
-        <li><a href="">Women</a></li>
-        <li><a href="">Kids</a></li>
-        <li><a href="">Beauty</a></li>
-        <li><a href="">Create Product</a></li>
-        <li><a href="">Profile</a></li>
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">Kids</a></li>
+        <li><a href="#">Colections</a></li>
+        @if(loggedIn){
+          <li><a href="#">Create Product</a></li>
+          <li><a href="#">Profile</a></li>
+        }
       </ul>
     </nav>
 

@@ -5,7 +5,7 @@
 
 .slider-wrapper{
     position: relative;
-    max-width: 48rem;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -13,11 +13,11 @@
     display: flex;
     aspect-ratio: 16 / 11;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    /* scroll-snap-type: x mandatory; */
     scroll-behavior: smooth;
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
     border-radius: 1rem;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
 }
 
 .slider img {
@@ -37,8 +37,8 @@
 }
 
 .slider-nav a{
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 50%;
     background-color: #fff;
     opacity: 0.75;
@@ -50,5 +50,5 @@
 }
 
 .slider::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
+    display: none; 
 }
