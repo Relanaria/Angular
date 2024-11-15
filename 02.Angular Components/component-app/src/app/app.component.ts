@@ -1,22 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { FooterComponent } from './footer/footer.component';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { ManClothesPageComponent } from './man-clothes-page/man-clothes-page.component';
-import { WomanClothesPageComponent } from './woman-clothes-page/woman-clothes-page.component';
-import { KidsClothesPageComponent } from './kids-clothes-page/kids-clothes-page.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet, HeaderComponent, MainComponent, 
-    LoginPageComponent, FooterComponent, RegisterPageComponent,
-    ManClothesPageComponent, WomanClothesPageComponent, KidsClothesPageComponent
-  ],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -20,6 +20,7 @@ a:hover{
     justify-content: space-around;
     align-items: center;
     padding: 1em 0;
+    width: 100%;
 }
 
 .header-navigation{
