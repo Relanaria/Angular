@@ -1,0 +1,121 @@
+
+a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.6rem;
+    transition: 0.3s;
+}
+
+a:hover{
+   color: white;
+}
+
+
+.products-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0em;
+}
+
+.products-container h1 {
+    margin-bottom: 1em;
+    font-size: 3rem;
+}
+
+.products-wrapper{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 4em;
+}
+
+.product-card{
+    flex: 0 1 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(214, 192, 179);
+    padding: 1em;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: 0.4s;
+}
+
+.product-card:hover{
+    padding: 2em;
+}
+
+.img-wrapper {
+    width: 100%;
+    height: 350px;
+    overflow: hidden; 
+}
+
+.product-img {
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 12px;
+}
+
+.filter-container{
+    text-align: center;
+    width: 100%;
+    margin: 3em 0em;
+}
+
+.filters {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    font-size: 1.15rem;
+}
+
+.filters label {
+    font-size: 1.5rem;
+}
+
+.filter {
+    /* ... */
+    position: relative;
+}
+
+
+.filter select {
+    appearance: none;
+    width: 100%;
+    font-size: 1.15rem;
+    padding: 0.675em 6em 0.675em 1em;
+    background-color: rgb(214, 192, 179);
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.filter::before,
+.filter::after {
+  --size: 0.3rem;
+  position: absolute;
+  content: "";
+  right: 1rem;
+  pointer-events: none;
+}
+
+.filter::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 60%;
+}
+
+.filter::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 80%;
+}

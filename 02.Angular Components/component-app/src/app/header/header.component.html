@@ -1,26 +1,26 @@
 <header>
   <div class="header-container">
-    <h1><a href="#">MyClothingBrand</a></h1>
+    <h1><a routerLink="/">MyClothingBrand</a></h1>
 
     <nav>
       <ul class="header-navigation">
-        <li><a href="#">Men</a></li>
-        <li><a href="#">Women</a></li>
-        <li><a href="#">Kids</a></li>
-        <li><a href="#">Colections</a></li>
+        <li><a routerLink="/clothes/mens">Men</a></li>
+        <li><a routerLink="/clothes/woman">Women</a></li>
+        <li><a routerLink="/clothes/kids">Kids</a></li>
+        <li><a routerLink="/colections">Colections</a></li>
         @if(loggedIn){
-          <li><a href="#">Create Product</a></li>
-          <li><a href="#">Profile</a></li>
+          <li><a routerLink="/create-product">Create Product</a></li>
+          <li><a routerLink="/profile">Profile</a></li>
         }
       </ul>
     </nav>
 
     <div class="user-links">
       @if(loggedIn){
-      <a href="#">Log Out</a>
+      <a routerLink="#">Log Out</a>
       }@else{
-      <a href="#">Login</a>
-      <a href="#">Register</a>
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
       }
     </div>
   </div>

@@ -6,6 +6,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { ManClothesPageComponent } from './man-clothes-page/man-clothes-page.component';
+import { WomanClothesPageComponent } from './woman-clothes-page/woman-clothes-page.component';
+import { KidsClothesPageComponent } from './kids-clothes-page/kids-clothes-page.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,7 @@ import { ManClothesPageComponent } from './man-clothes-page/man-clothes-page.com
   imports: [
     RouterOutlet, HeaderComponent, MainComponent, 
     LoginPageComponent, FooterComponent, RegisterPageComponent,
-    ManClothesPageComponent
+    ManClothesPageComponent, WomanClothesPageComponent, KidsClothesPageComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
