@@ -1,0 +1,11 @@
+<div class="login-container">
+    <h2>Login</h2>
+    <form [formGroup]="profileForm" (submit)="handleSubmit($event)" class="login-form">
+        <label for="email">Email:</label>
+        <input class="login-input"  email="email" placeholder="Email" type="text" id="email" name="email">
+        <label for="password">Password:</label>
+        <input class="login-input"  password="password" placeholder="Password" type="password" id="password" name="password">
+        <button type="submit" >Login</button>
+        <p class="login-register-p">Don't have an Account? Register <a routerLink="/register" class="login-register-link">here</a>.</p>
+    </form>
+</div>

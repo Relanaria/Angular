@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LoginPageComponent } from './features/clothes/login-page/login-page.component';
-import { RegisterPageComponent } from './features/clothes/register-page/register-page.component';
+import { LoginPageComponent } from './features/user/login-page/login-page.component';
+import { RegisterPageComponent } from './features/user/register-page/register-page.component';
 import { MainComponent } from './features/main-page/main/main.component';
 import { ManClothesPageComponent } from './features/clothes/man-clothes-page/man-clothes-page.component';
 import { WomanClothesPageComponent } from './features/clothes/woman-clothes-page/woman-clothes-page.component';
