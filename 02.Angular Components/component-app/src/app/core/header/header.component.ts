@@ -10,5 +10,5 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
- loggedIn:boolean = false;
+ loggedIn:boolean = true;
 }

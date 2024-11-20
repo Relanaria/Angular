@@ -6,6 +6,7 @@ import { ManClothesPageComponent } from './features/clothes/man-clothes-page/man
 import { WomanClothesPageComponent } from './features/clothes/woman-clothes-page/woman-clothes-page.component';
 import { KidsClothesPageComponent } from './features/clothes/kids-clothes-page/kids-clothes-page.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
+import { ProfilePageComponent } from './features/user/profile-page/profile-page.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -18,6 +19,7 @@ export const routes: Routes = [
             {path: "kids", component: KidsClothesPageComponent},
         ]
     },
+    {path: "profile", component: ProfilePageComponent},
     {path: "login", component: LoginPageComponent},
     {path: "register", component: RegisterPageComponent},
     {path: "**", component: NotfoundComponent}
