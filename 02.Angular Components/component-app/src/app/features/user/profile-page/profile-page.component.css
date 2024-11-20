@@ -12,6 +12,11 @@
     border-radius: 5px;
 }
 
+.input-section input[type="text"], .input-section input[type="email"]
+{
+    font-size:1.2rem;
+}
+
 .profile-picture div button{
     background-color: rgb(228, 224, 225);
     border: 2px solid rgb(73, 54, 40);

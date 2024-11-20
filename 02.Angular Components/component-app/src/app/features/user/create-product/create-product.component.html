@@ -1,0 +1,24 @@
+<div class="register-container">
+    <h2>Create Product Listing</h2>
+    <div class="form-container">
+        <form [formGroup]="createProductForm" (submit)="handeFormSubmit($event)" class="register-form">
+            <label for="productName">Product Name:</label>
+            <input formControlName="productName" class="register-input" placeholder="Product Name" type="text" id="productName" name="productName">
+            <label for="price">Price:</label>
+            <input formControlName="price" class="register-input" placeholder="Price" type="text" id="price" name="password">
+            <label for="size">Size:</label>
+            <input formControlName="size" class="register-input" placeholder="Size" type="text" id="size" name="size">
+            <label for="imgURL">Image URL:</label>
+            <input formControlName="imgURL" class="register-input" placeholder="Image URL" type="text" id="imgURL" name="imgURL">
+            <button type="submit">Submit</button>
+        </form>
+        <div class="form-preview">
+            <div class="img-container">
+                <img class="form-img-preview" src={{createProductForm.value.imgURL}} alt="Product Preview">
+            </div>
+            <h1>ProductName:{{createProductForm.value.productName}}</h1>
+            <p>Price: {{createProductForm.value.price}}$.</p>
+            <p>Size: {{createProductForm.value.size}}.</p>
+        </div>
+    </div>
+</div>
