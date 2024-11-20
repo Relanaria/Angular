@@ -15,13 +15,13 @@ import {
   styleUrl: './login-page.component.css',
 })
 export class LoginPageComponent {
-  profileForm = new FormGroup({
+  loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   });
 
   handleSubmit(event: SubmitEvent): void {
     event.preventDefault();
-    console.log(this.profileForm);
+    console.log(this.loginForm.value);
   }
 }
