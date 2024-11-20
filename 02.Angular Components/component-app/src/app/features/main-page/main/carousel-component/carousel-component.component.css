@@ -1,12 +1,14 @@
 a {
     color: black;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.6rem;
     transition: 0.5s;
     background-color: rgb(171, 136, 109);
     padding: 8px 16px;
     border-radius: 12px;
     margin-top: 0.5em;
+    width: fit-content;
+    align-self: center;
 }
 
 a:hover{
@@ -24,10 +26,10 @@ a:hover{
     -o-background-size: cover;
     background-size: cover;
     width: 96%;
-    height: 60vh;
+    height: 80vh;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: left;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
@@ -35,13 +37,13 @@ a:hover{
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
-    text-align: center;
+    align-items: left;
+    text-align: left;
     font-size: 1.5rem;
     width: 50%;
-    background-color: rgb(228, 224, 225, 0.6);
     padding: 1em;
     border-radius: 1em;
+    background-color: rgb(228, 224, 225, 0.2) ;
 }
 
 .hero-info h1 {
