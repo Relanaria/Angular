@@ -28,6 +28,11 @@ h2 {
     align-items: center;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.3s;
+}
+
+.wrapper-section:hover {
+    padding: 1em;
 }
 
 .wrapper-section h2 {
