@@ -4,11 +4,12 @@
         @for (product of products; track $index) {
             <div class="product-card">
                 <div class="img-wrapper">
-                    <a href="#">
+                    <a 
+                    routerLink="details/{{product.height}}">
                         <img class="product-img" src="https://images.pexels.com/photos/1020370/pexels-photo-1020370.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Clothe Img">
                     </a>
                 </div>
-                <a href="#">
+                <a routerLink="details/{{product.height}}">
                     <h2>{{product.name}}</h2>
                 </a>
                 <p>{{product.mass}}$</p>

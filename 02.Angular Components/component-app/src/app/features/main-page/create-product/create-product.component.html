@@ -1,15 +1,15 @@
-<div class="register-container">
+<div class="create-product-container">
     <h2>Create Product Listing</h2>
     <div class="form-container">
-        <form [formGroup]="createProductForm" (submit)="handeFormSubmit($event)" class="register-form">
+        <form [formGroup]="createProductForm" (submit)="handeFormSubmit($event)" class="create-product-form">
             <label for="productName">Product Name:</label>
-            <input formControlName="productName" class="register-input" placeholder="Product Name" type="text" id="productName" name="productName">
+            <input formControlName="productName" class="create-product-input" placeholder="Product Name" type="text" id="productName" name="productName">
             <label for="price">Price:</label>
-            <input formControlName="price" class="register-input" placeholder="Price" type="text" id="price" name="password">
+            <input formControlName="price" class="create-product-input" placeholder="Price" type="text" id="price" name="password">
             <label for="size">Size:</label>
-            <input formControlName="size" class="register-input" placeholder="Size" type="text" id="size" name="size">
+            <input formControlName="size" class="create-product-input" placeholder="Size" type="text" id="size" name="size">
             <label for="imgURL">Image URL:</label>
-            <input formControlName="imgURL" class="register-input" placeholder="Image URL" type="text" id="imgURL" name="imgURL">
+            <input formControlName="imgURL" class="create-product-input" placeholder="Image URL" type="text" id="imgURL" name="imgURL">
             <button type="submit">Submit</button>
         </form>
         <div class="form-preview">

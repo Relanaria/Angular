@@ -3,6 +3,7 @@ import { CarouselComponentComponent } from './carousel-component/carousel-compon
 import { ProductsComponent } from './products/products.component';
 import { ArticleProductsComponent } from './article-products/article-products.component';
 
+
 @Component({
   selector: 'app-main-component',
   standalone: true,
@@ -11,5 +12,4 @@ import { ArticleProductsComponent } from './article-products/article-products.co
   styleUrl: './main.component.css'
 })
 export class MainComponent {
-
 }

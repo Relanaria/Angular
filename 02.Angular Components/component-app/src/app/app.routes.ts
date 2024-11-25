@@ -7,11 +7,14 @@ import { WomanClothesPageComponent } from './features/clothes/woman-clothes-page
 import { KidsClothesPageComponent } from './features/clothes/kids-clothes-page/kids-clothes-page.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import { ProfilePageComponent } from './features/user/profile-page/profile-page.component';
-import { CreateProductComponent } from './features/user/create-product/create-product.component';
+import { CreateProductComponent } from './features/main-page/create-product/create-product.component';
+import { DetailsComponent } from './features/main-page/product-details/details.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home", pathMatch: "full"},
     {path: "home", component: MainComponent},
+    { path: 'home/details/:id', component:  DetailsComponent},
+    { path: 'details/:id', component:  DetailsComponent},
     {
         path: "clothes", 
         children: [

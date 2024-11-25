@@ -5,6 +5,18 @@
     border-bottom-left-radius: 1em;
 }
 
+button {
+    background-color: rgb(228, 224, 225);
+    border: 2px solid rgb(73, 54, 40);
+    padding: 10px 14px;
+    border-radius: 5px;
+    margin-top: 1em;
+}
+.save{
+    display: flex;
+    justify-content: center;
+}
+
 .input-section input {
     background-color: rgb(228, 224, 225);
     border: 2px solid rgb(73, 54, 40);
