@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DOMAINS } from '../../../constants';
+import { emailValidator } from '../../../utils/email.validator';
 
 @Component({
   selector: 'app-register-page',
@@ -10,16 +12,19 @@ import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angul
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
+  domains = DOMAINS
 
   registeForm = new FormGroup({
-    email: new FormControl(""),
-    username: new FormControl(""),
-    password: new FormControl(""),
+    email: new FormControl("", [Validators.required, emailValidator(this.domains)]),
+    username: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    password: new FormControl("",[Validators.required, Validators.minLength(5)]),
   })
 
 
   handeFormSubmit(event: SubmitEvent):void {
-    event.preventDefault();
+    if(this.registeForm.invalid){
+      return;
+    }
     console.log(this.registeForm.value);
     this.registeForm.reset();
   }

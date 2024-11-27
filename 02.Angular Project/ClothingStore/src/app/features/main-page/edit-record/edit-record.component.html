@@ -1,24 +1,69 @@
 <div class="edit-product-container">
-    <h2>Create Product Listing</h2>
-    <div class="form-container">
-        <form [formGroup]="editProductForm" (submit)="handeFormSubmit($event)" class="edit-product-form">
-            <label for="productName">Product Name:</label>
-            <input formControlName="productName" class="edit-product-input" placeholder="Product Name" type="text" id="productName" name="productName">
-            <label for="price">Price:</label>
-            <input formControlName="price" class="edit-product-input" placeholder="Price" type="text" id="price" name="password">
-            <label for="size">Size:</label>
-            <input formControlName="size" class="edit-product-input" placeholder="Size" type="text" id="size" name="size">
-            <label for="imgURL">Image URL:</label>
-            <input formControlName="imgURL" class="edit-product-input" placeholder="Image URL" type="text" id="imgURL" name="imgURL">
-            <button type="submit">Submit</button>
-        </form>
-        <div class="form-preview">
-            <div class="img-container">
-                <img class="form-img-preview" src={{editProductForm.value.imgURL}} alt="Product Preview">
-            </div>
-            <h1>ProductName:{{editProductForm.value.productName}}</h1>
-            <p>Price: {{editProductForm.value.price}}$.</p>
-            <p>Size: {{editProductForm.value.size}}.</p>
-        </div>
+  <h2>Create Product Listing</h2>
+  <div class="form-container">
+    <form
+      [formGroup]="editProductForm"
+      (submit)="handeFormSubmit($event)"
+      class="edit-product-form"
+    >
+      <label for="productName">Product Name:</label>
+      <input
+        formControlName="productName"
+        class="edit-product-input"
+        placeholder="Product Name"
+        type="text"
+        id="productName"
+        name="productName"
+      />
+      @if(editProductForm.get('productName')?.touched){
+      <div>
+        @if(editProductForm.get('productName')?.errors?.['required']){
+        <p class="error">ProductName is Required!</p>
+        } @if(editProductForm.get('productName')?.errors?.['minlength']){
+        <p class="error">Minimum length is 3 chars!</p>
+        }
+      </div>
+      }
+      <label for="price">Price:</label>
+      <input
+        formControlName="price"
+        class="edit-product-input"
+        placeholder="Price"
+        type="number"
+        id="price"
+        name="password"
+      />
+      <label for="size">Size:</label>
+      <input
+        formControlName="size"
+        class="edit-product-input"
+        placeholder="Size"
+        type="text"
+        id="size"
+        name="size"
+      />
+      <label for="imgURL">Image URL:</label>
+      <input
+        formControlName="imgURL"
+        class="edit-product-input"
+        placeholder="Image URL"
+        type="text"
+        id="imgURL"
+        name="imgURL"
+      />
+      <button type="submit">Submit</button>
+    </form>
+    <div class="form-preview">
+      <div class="img-container">
+        <img
+          class="form-img-preview"
+          src="{{ editProductForm.value.imgURL }}"
+          alt="Product Preview"
+        />
+      </div>
+      <h1>ProductName:{{ editProductForm.value.productName }}</h1>
+      <p>Price: {{ editProductForm.value.price }}$.</p>
+      <p>Size: {{ editProductForm.value.size }}.</p>
     </div>
+  </div>
 </div>

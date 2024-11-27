@@ -63,3 +63,8 @@ button:hover{
 .login-register-link:hover {
     color: white;
 }
+
+
+.error{
+    color: red;
+}

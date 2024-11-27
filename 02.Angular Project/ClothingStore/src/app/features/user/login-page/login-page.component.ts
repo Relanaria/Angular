@@ -1,27 +1,37 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {
-  FormsModule,
   FormGroup,
   FormControl,
   ReactiveFormsModule,
+  Validators
 } from '@angular/forms';
+import { DOMAINS } from '../../../constants';
+import { emailValidator } from '../../../utils/email.validator';
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [RouterLink, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink,  ReactiveFormsModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css',
 })
+
 export class LoginPageComponent {
+  domains = DOMAINS
+
   loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', [Validators.required, emailValidator(this.domains)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
-  handleSubmit(event: SubmitEvent): void {
-    event.preventDefault();
+  constructor(private router: Router){}
+
+  handleSubmit(): void {
+    if(this.loginForm.invalid){
+      return;
+    }
     console.log(this.loginForm.value);
+    this.loginForm.reset();
   }
 }

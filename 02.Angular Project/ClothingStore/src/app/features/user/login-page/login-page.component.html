@@ -1,11 +1,48 @@
 <div class="login-container">
-    <h2>Login</h2>
-    <form [formGroup]="loginForm" (submit)="handleSubmit($event)" class="login-form">
-        <label for="email">Email:</label>
-        <input class="login-input"  formControlName="email" placeholder="Email" type="text" id="email" name="email">
-        <label for="password">Password:</label>
-        <input class="login-input"  formControlName="password" placeholder="Password" type="password" id="password" name="password">
-        <button type="submit" >Login</button>
-        <p class="login-register-p">Don't have an Account? Register <a routerLink="/register" class="login-register-link">here</a>.</p>
-    </form>
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()" class="login-form">
+    <label for="email">Email:</label>
+    <input
+      class="login-input"
+      placeholder="Email"
+      type="text"
+      id="email"
+      name="email"
+      formControlName="email"
+      required
+    />
+    @if(loginForm.get('email')?.touched){
+    <div>
+      @if(loginForm.get('email')?.errors?.['required']){
+      <p class="error">Email is Required!</p>
+      } @if(loginForm.get('email')?.errors?.['emailValidator']){
+      <p class="error">Email is not Valid!</p>
+      }
+    </div>
+    }
+    <label for="password">Password:</label>
+    <input
+      class="login-input"
+      placeholder="Password"
+      type="password"
+      id="password"
+      name="password"
+      formControlName="password"
+      required
+    />
+    @if(loginForm.get('password')?.touched){
+    <div>
+      @if(loginForm.get('password')?.errors?.['required']){
+      <p class="error">Password is Required!</p>
+      } @if(loginForm.get('password')?.errors?.['minlength']){
+      <p class="error">Password must be 5 chars long!</p>
+      }
+    </div>
+    }
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    <p class="login-register-p">
+      Don't have an Account? Register
+      <a routerLink="/register" class="login-register-link">here</a>.
+    </p>
+  </form>
 </div>

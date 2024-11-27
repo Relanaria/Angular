@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Validators, FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-product',
@@ -11,11 +11,11 @@ import { FormsModule, FormGroup, FormControl, ReactiveFormsModule } from '@angul
 
 export class CreateProductComponent {
 
-  createProductForm = new FormGroup({
-    productName: new FormControl(""),
-    size: new FormControl(""),
-    price: new FormControl(""),
-    imgURL: new FormControl(""),
+  createProductForm =  new FormGroup({
+    productName: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    size: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    price: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    imgURL: new FormControl("", [Validators.required, Validators.minLength(3)]),
   })
 
 

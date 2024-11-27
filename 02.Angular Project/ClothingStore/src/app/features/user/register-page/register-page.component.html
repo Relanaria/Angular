@@ -1,13 +1,68 @@
 <div class="register-container">
-    <h2>Register</h2>
-    <form [formGroup]="registeForm" (submit)="handeFormSubmit($event)" class="register-form">
-        <label for="email">Email:</label>
-        <input formControlName="email" class="register-input" placeholder="Email" type="text" id="email" name="email">
-        <label for="username">Username:</label>
-        <input formControlName="username" class="register-input" placeholder="Username" type="text" id="username" name="username">
-        <label for="password">Password:</label>
-        <input formControlName="password" class="register-input" placeholder="Password" type="password" id="password" name="password">
-        <button type="submit">Register</button>
-        <p class="register-login-p">Have an Account? Login <a routerLink="/login" class="register-login-link">here</a>.</p>
-    </form>
+  <h2>Register</h2>
+  <form
+    [formGroup]="registeForm"
+    (submit)="handeFormSubmit($event)"
+    class="register-form"
+  >
+    <label for="email">Email:</label>
+    <input
+      formControlName="email"
+      class="register-input"
+      placeholder="Email"
+      type="text"
+      id="email"
+      name="email"
+    />
+    @if(registeForm.get('email')?.touched){
+        <div>
+          @if(registeForm.get('email')?.errors?.['required']){
+          <p class="error">Email is Required!</p>
+          } @if(registeForm.get('email')?.errors?.['emailValidator']){
+          <p class="error">Email is not Valid!</p>
+          }
+        </div>
+        }
+    <label for="username">Username:</label>
+    <input
+      formControlName="username"
+      class="register-input"
+      placeholder="Username"
+      type="text"
+      id="username"
+      name="username"
+    />
+    @if(registeForm.get('username')?.touched){
+        <div>
+          @if(registeForm.get('username')?.errors?.['required']){
+          <p class="error">Username is Required!</p>
+          } @if(registeForm.get('username')?.errors?.['minlength']){
+          <p class="error">Username must be 3 chars long!</p>
+          }
+        </div>
+        }
+    <label for="password">Password:</label>
+    <input
+      formControlName="password"
+      class="register-input"
+      placeholder="Password"
+      type="password"
+      id="password"
+      name="password"
+    />
+    @if(registeForm.get('password')?.touched){
+        <div>
+          @if(registeForm.get('password')?.errors?.['required']){
+          <p class="error">Password is Required!</p>
+          } @if(registeForm.get('password')?.errors?.['minlength']){
+          <p class="error">Password must be 5 chars long!</p>
+          }
+        </div>
+        }
+    <button type="submit">Register</button>
+    <p class="register-login-p">
+      Have an Account? Login
+      <a routerLink="/login" class="register-login-link">here</a>.
+    </p>
+  </form>
 </div>
