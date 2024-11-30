@@ -40,7 +40,7 @@ export class ProductsFilterService {
   private sizeFilter$ = new BehaviorSubject<string | null>('all');
   private colorFilter$ = new BehaviorSubject<string | null>('all');
 
-  filteredProducts$: Observable<any[]> = combineLatest([
+  filteredProducts$: Observable<Product[]> = combineLatest([
     this.products$,
     this.priceFilter$,
     this.sizeFilter$,
@@ -67,11 +67,11 @@ export class ProductsFilterService {
     this.priceFilter$.next(price);
   }
 
-  setCategoryFilter(size: string | null) {
+  setSizeFilter(size: string | null) {
     this.sizeFilter$.next(size);
   }
 
-  setAvailabilityFilter(color: string | null) {
+  setColorFilter(color: string | null) {
     this.colorFilter$.next(color);
   }
 }

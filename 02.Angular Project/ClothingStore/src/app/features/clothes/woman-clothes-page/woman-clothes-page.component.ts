@@ -1,43 +1,37 @@
 import { Component } from '@angular/core';
 import { Product } from '../interfaces/product.interface';
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ProductsFilterService } from '../clothes-services/products-filter.service';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-woman-clothes-page',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, CommonModule],
   templateUrl: './woman-clothes-page.component.html',
   styleUrl: './woman-clothes-page.component.css'
 })
 export class WomanClothesPageComponent {
   
-  products: Product[];
+  products$: Observable<Product[]>;
 
-  constructor(){
-    this.products = [
-      {title:'Product 1',
-        price: 1,
-        color: "red",
-        size: "S",
-        imgURL: 'https://images.pexels.com/photos/1020370/pexels-photo-1020370.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-      {title:'Product 2',
-        price: 3,
-        color: "blue",
-        size: "S",
-        imgURL: 'https://images.pexels.com/photos/459486/pexels-photo-459486.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-      {title:'Product 3',
-        price: 6,
-        color: "black",
-        size: "S",
-        imgURL: 'https://images.pexels.com/photos/459486/pexels-photo-459486.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-      {title:'Product 4',
-        price: 8,
-        color: "black",
-        size: "S",
-        imgURL: 'https://images.pexels.com/photos/459486/pexels-photo-459486.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-    ];
-}
+  selectPriceFilter: string = 'low';
+  selectColorFilter: string = 'all';
+  selectSizeFilter: string = 'all';
+
+  constructor( private productService: ProductsFilterService){
+    this.products$ = this.productService.filteredProducts$;
+  }
+
+  onPriceChange() {
+    this.productService.setPriceFilter(this.selectPriceFilter );
+  }
+
+  onSizeChange() {
+    this.productService.setSizeFilter(this.selectSizeFilter);
+  }
+
+  onColorChange() {
+    this.productService.setColorFilter(this.selectColorFilter);
+  }
 }

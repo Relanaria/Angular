@@ -5,7 +5,13 @@
     <div class="filters">
       <div class="filter">
         <label for="size">Size:</label>
-        <select name="size" id="size" [(ngModel)]="selectSizeFilter" (change)="onSizeChange()" class="size">
+        <select
+          name="size"
+          id="size"
+          [(ngModel)]="selectSizeFilter"
+          (change)="onSizeChange()"
+          class="size"
+        >
           <option value="all">all</option>
           <option value="S">S</option>
           <option value="M">M</option>
@@ -15,14 +21,26 @@
       </div>
       <div class="filter">
         <label for="price">By Price:</label>
-        <select name="price" id="price" [(ngModel)]="selectPriceFilter" (change)="onPriceChange()" class="price">
+        <select
+          name="price"
+          id="price"
+          [(ngModel)]="selectPriceFilter"
+          (change)="onPriceChange()"
+          class="price"
+        >
           <option value="low">Low-to-High</option>
           <option value="high">High-to-low</option>
         </select>
       </div>
       <div class="filter">
         <label for="color">By color:</label>
-        <select name="color" id="color" [(ngModel)]="selectColorFilter" (change)="onColorChange()" class="color">
+        <select
+          name="color"
+          id="color"
+          [(ngModel)]="selectColorFilter"
+          (change)="onColorChange()"
+          class="color"
+        >
           <option value="all">All</option>
           <option value="black">Black</option>
           <option value="white">White</option>
@@ -32,23 +50,28 @@
       </div>
     </div>
   </div>
-  <div class="products-wrapper">
-   
-    <div class="product-card" *ngFor="let product of products$ | async">
-      <div class="img-wrapper">
-        <a href="#">
-          <img
+  <div class="products-wrapper" >
+    
+    @if((products$ | async)?.length){
+      <div class="product-card" *ngFor="let product of products$ | async">
+        <div class="img-wrapper">
+          <a href="#">
+            <img
             class="product-img"
             src="{{ product.imgURL }}"
             alt="Clothe Img"
-          />
+            />
+          </a>
+        </div>
+        <a href="#">
+          <h2>{{ product.title }}</h2>
         </a>
+        <p>{{ product.price }}$</p>
       </div>
-      <a href="#">
-        <h2>{{ product.title }}</h2>
-      </a>
-      <p>{{ product.price }}$</p>
-    </div>
-    
+    }@else {
+      <div class="no-products">
+        <p>No Available Products with current filters applied.</p>
+      </div>
+    }
   </div>
 </div>

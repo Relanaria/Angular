@@ -1,44 +1,65 @@
 <div class="products-container">
-    <div class="filter-container">
-      <h1>Kids section</h1>
-      <h2>Sort Clothes</h2>
-      <div class="filters">
-        <div class="filter">
-          <label for="size">Size:</label>
-          <select name="size" id="size" class="size">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-            <option value="XL">XL</option>
-          </select>
-        </div>
-        <div class="filter">
-          <label for="price">By Price:</label>
-          <select name="pcei" id="price" class="price">
-            <option value="high">High-to-low</option>
-            <option value="low">Low-to-High</option>
-          </select>
-        </div>
-        <div class="filter">
-          <label for="color">By color:</label>
-          <select name="color" id="color" class="color">
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="blue">Blue</option>
-            <option value="red">Red</option>
-          </select>
-        </div>
+  <div class="filter-container">
+    <h1>Kids section</h1>
+    <h2>Sort Clothes</h2>
+    <div class="filters">
+      <div class="filter">
+        <label for="size">Size:</label>
+        <select
+          name="size"
+          id="size"
+          [(ngModel)]="selectSizeFilter"
+          (change)="onSizeChange()"
+          class="size"
+        >
+          <option value="all">all</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label for="price">By Price:</label>
+        <select
+          name="price"
+          id="price"
+          [(ngModel)]="selectPriceFilter"
+          (change)="onPriceChange()"
+          class="price"
+        >
+          <option value="low">Low-to-High</option>
+          <option value="high">High-to-low</option>
+        </select>
+      </div>
+      <div class="filter">
+        <label for="color">By color:</label>
+        <select
+          name="color"
+          id="color"
+          [(ngModel)]="selectColorFilter"
+          (change)="onColorChange()"
+          class="color"
+        >
+          <option value="all">All</option>
+          <option value="black">Black</option>
+          <option value="white">White</option>
+          <option value="blue">Blue</option>
+          <option value="red">Red</option>
+        </select>
       </div>
     </div>
-    <div class="products-wrapper">
-      @for (product of products; track $index) {
-      <div class="product-card">
+  </div>
+  <div class="products-wrapper" >
+    
+    @if((products$ | async)?.length){
+      <div class="product-card" *ngFor="let product of products$ | async">
         <div class="img-wrapper">
           <a href="#">
             <img
-              class="product-img"
-              src="{{ product.imgURL }}"
-              alt="Clothe Img"
+            class="product-img"
+            src="{{ product.imgURL }}"
+            alt="Clothe Img"
             />
           </a>
         </div>
@@ -47,7 +68,10 @@
         </a>
         <p>{{ product.price }}$</p>
       </div>
-      }
-    </div>
+    }@else {
+      <div class="no-products">
+        <p>No Available Products with current filters applied.</p>
+      </div>
+    }
   </div>
-  
+</div>

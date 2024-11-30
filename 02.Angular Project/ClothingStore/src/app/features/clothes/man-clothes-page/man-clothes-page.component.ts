@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Product } from '../interfaces/product.interface';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { ProductsFilterService } from '../clothes-services/products-filter.service';
 import { Observable } from 'rxjs';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-man-clothes-page',
@@ -29,10 +29,10 @@ export class ManClothesPageComponent {
   }
 
   onSizeChange() {
-    this.productService.setCategoryFilter(this.selectSizeFilter);
+    this.productService.setSizeFilter(this.selectSizeFilter);
   }
 
   onColorChange() {
-    this.productService.setAvailabilityFilter(this.selectColorFilter);
+    this.productService.setColorFilter(this.selectColorFilter);
   }
 }
