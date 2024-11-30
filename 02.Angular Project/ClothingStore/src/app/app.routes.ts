@@ -9,6 +9,7 @@ import { NotfoundComponent } from './core/notfound/notfound.component';
 import { ProfilePageComponent } from './features/user/profile-page/profile-page.component';
 import { CreateProductComponent } from './features/main-page/create-product/create-product.component';
 import { DetailsComponent } from './features/main-page/product-details/details.component';
+import { userGuardsGuard } from './guards/user-guards.guard';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home", pathMatch: "full"},
@@ -23,8 +24,15 @@ export const routes: Routes = [
             {path: "kids", component: KidsClothesPageComponent},
         ]
     },
-    {path:"create-product", component:CreateProductComponent},
-    {path: "profile", component: ProfilePageComponent},
+    {
+        path:"create-product", 
+        component:CreateProductComponent,
+        canActivate: [userGuardsGuard]
+    },
+    {
+        path: "profile", 
+        component: ProfilePageComponent,
+        canActivate: [userGuardsGuard]},
     {path: "login", component: LoginPageComponent},
     {path: "register", component: RegisterPageComponent},
     {path: "**", component: NotfoundComponent}

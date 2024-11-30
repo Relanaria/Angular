@@ -17,9 +17,9 @@
 
     <div class="user-links">
       @if(loggedIn){
-      <a routerLink="#">Log Out</a>
+      <a routerLink="/home" (click)="setLoggedIn()">Log Out</a>
       }@else{
-      <a routerLink="/login">Login</a>
+      <a routerLink="/login" (click)="setLoggedIn()">Login</a>
       <a routerLink="/register">Register</a>
       }
     </div>

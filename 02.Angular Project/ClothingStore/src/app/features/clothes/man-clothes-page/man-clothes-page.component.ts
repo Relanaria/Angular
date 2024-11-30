@@ -1,35 +1,38 @@
 import { Component } from '@angular/core';
 import { Product } from '../interfaces/product.interface';
+import { FormsModule } from '@angular/forms';
+import { ProductsFilterService } from '../clothes-services/products-filter.service';
+import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-man-clothes-page',
   standalone: true,
-  imports: [],
+  imports: [ FormsModule, CommonModule],
   templateUrl: './man-clothes-page.component.html',
   styleUrl: './man-clothes-page.component.css'
 })
 export class ManClothesPageComponent {
 
-  products: Product[];
+  products$: Observable<Product[]>;
 
-  constructor(){
-    this.products = [
-      {title:'Product 1',
-        price: 5,
-        imgURL: 'https://images.pexels.com/photos/1020370/pexels-photo-1020370.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-      {title:'Product 2',
-        price: 5,
-        imgURL: 'https://images.pexels.com/photos/459486/pexels-photo-459486.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-      {title:'Product 3',
-        price: 5,
-        imgURL: 'https://images.pexels.com/photos/459486/pexels-photo-459486.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-      {title:'Product 4',
-        price: 5,
-        imgURL: 'https://images.pexels.com/photos/459486/pexels-photo-459486.jpeg?auto=compress&cs=tinysrgb&w=600'
-      },
-    ];
+  selectPriceFilter: string = 'low';
+  selectColorFilter: string = 'all';
+  selectSizeFilter: string = 'all';
+
+  constructor( private productService: ProductsFilterService){
+    this.products$ = this.productService.filteredProducts$;
+  }
+
+  onPriceChange() {
+    this.productService.setPriceFilter(this.selectPriceFilter );
+  }
+
+  onSizeChange() {
+    this.productService.setCategoryFilter(this.selectSizeFilter);
+  }
+
+  onColorChange() {
+    this.productService.setAvailabilityFilter(this.selectColorFilter);
   }
 }
