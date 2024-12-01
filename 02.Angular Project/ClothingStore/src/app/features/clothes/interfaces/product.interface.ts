@@ -3,7 +3,10 @@ export interface Product {
     price: number,
     color: string,
     size: string,
-    imgURL: string
+    imgURL: string,
+    _ownerId: string,
+    _createdOn: number,
+    _id: string
 }
 
 

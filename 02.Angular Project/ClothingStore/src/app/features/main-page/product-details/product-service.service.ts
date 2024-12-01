@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SwapiPersons } from '../main/interfaces/swapi-persons';
+import { Product } from '../../clothes/interfaces/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServiceService {
 
-  apiURL = 'https://swapi.dev/api/people/?search=';
+  apiURL = 'http://localhost:3030/data/menClothes/';
   constructor(private http: HttpClient) { }
 
   getOneProduct(id:string){
-    return this.http.get<SwapiPersons>(this.apiURL + id);
+    return this.http.get<Product>(this.apiURL + id);
   }
 }

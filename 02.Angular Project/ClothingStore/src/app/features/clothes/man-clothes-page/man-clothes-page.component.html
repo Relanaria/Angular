@@ -55,7 +55,7 @@
     @if((products$ | async)?.length){
       <div class="product-card" *ngFor="let product of products$ | async">
         <div class="img-wrapper">
-          <a href="#">
+          <a routerLink="/details/{{product._id}}">
             <img
             class="product-img"
             src="{{ product.imgURL }}"
@@ -63,7 +63,7 @@
             />
           </a>
         </div>
-        <a href="#">
+        <a routerLink="/details/{{product._id}}">
           <h2>{{ product.title }}</h2>
         </a>
         <p>{{ product.price }}$</p>

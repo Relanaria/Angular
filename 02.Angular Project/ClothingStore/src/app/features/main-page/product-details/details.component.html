@@ -1,20 +1,21 @@
-<div class="products-wrapper">
-    <div class="product-card">
-  <div class="img-wrapper">
-    <img
-      class="product-img"
-      src="https://images.pexels.com/photos/1020370/pexels-photo-1020370.jpeg?auto=compress&cs=tinysrgb&w=600"
-      alt="Clothe Img"
-    />
-  </div>
-  <h2>{{ personData.name }}</h2>
-  <p>Price: {{ personData.mass }}$</p>
-  <p>Color: {{ personData.mass }}$</p>
-
-  <div class="btn-container">
-    <button>Like</button>
-    <a routerLink="/edit/{{ personData._id }}">EDIT</a>
-    <button>DELETE</button>
-  </div>
+<div class="products-wrapper" *ngIf="personData">
+  <div class="product-card">
+    <div class="img-wrapper">
+      <img
+        class="product-img"
+        [src]="personData.imgURL"
+        alt="Clothe Img"
+      />
     </div>
+    <h2>{{ personData.title }}</h2>
+    <p>Price: {{ personData.price }}$.</p>
+    <p>Size: {{ personData.size }}.</p>
+    <p>Color: {{ personData.color }}.</p>
+
+    <div class="btn-container">
+      <button class="details-btn">Like</button>
+      <a routerLink="/edit/{{ personData._id }}" class="details-btn">EDIT</a>
+      <button class="details-btn">DELETE</button>
+    </div>
+  </div>
 </div>
