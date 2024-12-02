@@ -12,6 +12,8 @@ import { DetailsComponent } from './features/product-details/details.component';
 import { userGuardsGuard } from './guards/user-guards.guard';
 import { EditRecordComponent } from './features/edit-record/edit-record.component';
 
+//toLazyLoad All Other components
+
 export const routes: Routes = [
     {path: "", redirectTo: "/home", pathMatch: "full"},
     {path: "home", component: MainComponent},
@@ -27,8 +29,8 @@ export const routes: Routes = [
         ]
     },
     {
-        path:"create-product", 
-        component: CreateProductComponent,
+        path:"create-product",
+        loadComponent: () =>import('./features/create-product/create-product.component').then(c => c.CreateProductComponent) ,
         canActivate: [userGuardsGuard]
     },
     {
