@@ -9,11 +9,10 @@ import { RegisterInfo } from '../interfaces/register-info';
 })
 export class UserAuthService {
   private user$$ = new BehaviorSubject<UserLogin | undefined>(undefined);
-  private user$ = this.user$$.asObservable();
+  public user$ = this.user$$.asObservable();
 
 
   USER_KEY:string ='[user]';
-  user: UserLogin | null = null;
 
 
   constructor(private http: HttpClient) { }
@@ -26,7 +25,6 @@ export class UserAuthService {
    .pipe(tap(user =>{
     this.user$$.next(user);
    }));
-
     // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
@@ -39,5 +37,11 @@ export class UserAuthService {
       this.user$$.next(user);
     }));
 
+  }
+
+  logOut(){
+
+    this.user$$.next(undefined);
+    this.http.get('users/logout');
   }
 }

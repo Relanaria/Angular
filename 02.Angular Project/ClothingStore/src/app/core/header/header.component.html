@@ -8,7 +8,7 @@
         <li><a routerLink="/clothes/woman">Women</a></li>
         <li><a routerLink="/clothes/kids">Kids</a></li>
         <li><a routerLink="/colections">Colections</a></li>
-        @if(loggedIn){
+        @if(loggedIn !== undefined){
           <li><a routerLink="/create-product">Create Product</a></li>
           <li><a routerLink="/profile">Profile</a></li>
         }
@@ -16,8 +16,8 @@
     </nav>
 
     <div class="user-links">
-      @if(loggedIn){
-      <a routerLink="/home" >Log Out</a>
+      @if(loggedIn !== undefined){
+      <a routerLink="/home" (click)="logOutHandle()" >Log Out</a>
       }@else{
       <a routerLink="/login" >Login</a>
       <a routerLink="/register">Register</a>
