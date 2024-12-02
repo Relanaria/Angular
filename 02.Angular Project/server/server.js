@@ -1385,9 +1385,88 @@
             },
         },
         womanClothes:{
-
+          "77353f42-25ae-4744-8c2b-939a15f90fa4": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Pants",
+                "price": 8,
+                "color": "brown",
+                "size": "S",
+                "imgURL": "https://i5.walmartimages.com/seo/Jmntiy-Women-s-Slim-Fit-Flare-Solid-Suit-Pants-Leisure-Trousers-Bell-bottoms-Solid-Color-Pants-Womens-pants-Clearance_7d8b19cf-bf04-45c6-8197-49d51130a077.5ba902bfdad6c7118c5938a9dc642537.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
+                "_createdOn": 1733127171700,
+                "_id": "77353f42-25ae-4744-8c2b-939a15f90fa4"
+            },
+            "cb9b77ac-1f81-4249-a2d9-0c96b843b220": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Pants",
+                "price": 8,
+                "color": "blue",
+                "size": "M",
+                "imgURL": "https://m.media-amazon.com/images/I/71wNwAqgw3L._AC_UY1000_.jpg",
+                "_createdOn": 1733127211081,
+                "_id": "cb9b77ac-1f81-4249-a2d9-0c96b843b220"
+            },
+            "ffa1f312-123d-45b7-b6d6-93cf34e1b169": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "T-Shirt",
+                "price": 3,
+                "color": "black",
+                "size": "L",
+                "imgURL": "https://boody.com/cdn/shop/files/Women_s-Ribbed-Crew-Neck-T-Shirt-black-front-1_9cea73b6-eebd-48d8-ac7a-dce289402044.jpg?v=1715127876",
+                "_createdOn": 1733127259349,
+                "_id": "ffa1f312-123d-45b7-b6d6-93cf34e1b169"
+            },
+            "d15ae448-ef3f-48a2-9650-ba0d2eb2e0dc": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "T-Shirt",
+                "price": 3,
+                "color": "red",
+                "size": "M",
+                "imgURL": "https://bg.benetton.com/dw/image/v2/BBSF_PRD/on/demandware.static/-/Sites-ucb-master/default/dw03824c26/images/Full_Card_v/01_24A_3096D1071_3H8_F.jpg?sw=600&sh=800",
+                "_createdOn": 1733127286046,
+                "_id": "d15ae448-ef3f-48a2-9650-ba0d2eb2e0dc"
+            }
         },
         kidsClothes:{
+           "3a1a0107-c8ba-4b06-92b2-807cf94bcc4d": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "T-Shirt",
+                "price": 77,
+                "color": "white",
+                "size": "M",
+                "imgURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN1M5VgDHSw2hRs4oOx0oTp2_4acq4QeCLKA&s",
+                "_createdOn": 1733127344922,
+                "_id": "3a1a0107-c8ba-4b06-92b2-807cf94bcc4d"
+            },
+            "2c108e95-29d0-4211-a959-10714a8b3a86": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "T-Shirt",
+                "price": 39.99,
+                "color": "red",
+                "size": "S",
+                "imgURL": "https://images2.habeco.si/Upload/Product/sols-imperial-kids-round-collar-t-shirt_7813_productmain.webp",
+                "_createdOn": 1733127387598,
+                "_id": "2c108e95-29d0-4211-a959-10714a8b3a86"
+            },
+            "3d707374-cd06-4b39-a446-36ef4516439b": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Pants",
+                "price": 39.99,
+                "color": "black",
+                "size": "M",
+                "imgURL": "https://e-lily.pl/eng_pl_All-For-Kids-Baggy-Pants-4379_10.jpg",
+                "_createdOn": 1733127441060,
+                "_id": "3d707374-cd06-4b39-a446-36ef4516439b"
+            },
+            "9d83e890-b613-4ac5-8065-7479e4fde3cc": {
+                "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+                "title": "Pants",
+                "price": 39.99,
+                "color": "white",
+                "size": "L",
+                "imgURL": "https://www.citythreads.com/cdn/shop/products/jspm-wh-web_d007e1b8-28ba-4e86-9d6a-0bcd5f252281_1082x.jpg?v=1622003116",
+                "_createdOn": 1733127475809,
+                "_id": "9d83e890-b613-4ac5-8065-7479e4fde3cc"
+            }
 
         },
         

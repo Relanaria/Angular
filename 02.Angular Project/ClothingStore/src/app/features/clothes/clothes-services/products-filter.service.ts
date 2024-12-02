@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, combineLatest, filter } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, switchMap } from 'rxjs';
 import { map } from 'rxjs';
-import { Product } from '../interfaces/product.interface';
+import { Product } from '../../interfaces/product.interface';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsFilterService {
-  private products: Product[] = [];
-
-  constructor(private httpClient: HttpClient) {
-    this.httpClient
-      .get<Product[]>('http://localhost:3030/data/menClothes')
-      .subscribe((data) => {
-        this.products = data;
-        this.products$.next(data);
-      });
-  }
-  
-
-  private products$ = new BehaviorSubject(this.products);
+  private products$ = new BehaviorSubject<Product[]>([]);
+  private apiKey$ = new BehaviorSubject<string>('http://localhost:3030/data/menClothes/');
 
   private priceFilter$ = new BehaviorSubject<string | null>('low');
   private sizeFilter$ = new BehaviorSubject<string | null>('all');
   private colorFilter$ = new BehaviorSubject<string | null>('all');
+
+  constructor(private httpClient: HttpClient) {
+    // Fetch products whenever API_KEY changes
+    this.apiKey$
+      .pipe(
+        switchMap((apiKey) => this.httpClient.get<Product[]>(apiKey)) // Fetch data from the new API
+      )
+      .subscribe((data) => {
+        this.products$.next(data); // Update the products$ BehaviorSubject
+      });
+  }
 
   filteredProducts$: Observable<Product[]> = combineLatest([
     this.products$,
@@ -41,15 +41,17 @@ export class ProductsFilterService {
 
       if (price === 'low') {
         filtered = [...filtered].sort((a, b) => a.price - b.price);
-
       } else if (price === 'high') {
         filtered = [...filtered].sort((a, b) => b.price - a.price);
-
       }
 
       return filtered;
     })
   );
+
+  setApiKey(key: string) {
+    this.apiKey$.next(key); // Update the apiKey$ BehaviorSubject
+  }
 
   setPriceFilter(price: string | null) {
     this.priceFilter$.next(price);

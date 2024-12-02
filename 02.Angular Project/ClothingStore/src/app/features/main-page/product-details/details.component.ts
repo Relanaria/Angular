@@ -13,16 +13,18 @@ import { CommonModule } from '@angular/common';
 })
 export class DetailsComponent implements OnInit {
   id: string;
+  section: string;
   personData:any | null = null;
 
   constructor(
     private route: ActivatedRoute, 
     private getProduct: ProductServiceService) {
     this.id = this.route.snapshot.params["id"];
+    this.section = this.route.snapshot.params['section'];
     }
 
   ngOnInit(): void {
-    this.getProduct.getOneProduct(this.id).subscribe(data =>{
+    this.getProduct.getOneProduct(this.id, this.section).subscribe(data =>{
       this.personData = data;
     })
   }

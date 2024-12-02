@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../interfaces/product.interface';
+import { Product } from '../../../interfaces/product.interface';
 import { SwapiServiceService } from './swapi-service.service';
 import { Person } from '../interfaces/swapi-persons';
 import { RouterLink } from '@angular/router';

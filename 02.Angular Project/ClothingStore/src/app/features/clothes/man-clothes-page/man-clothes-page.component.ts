@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Product } from '../interfaces/product.interface';
+import { Product } from '../../interfaces/product.interface';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProductsFilterService } from '../clothes-services/products-filter.service';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-man-clothes-page',
@@ -13,9 +14,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './man-clothes-page.component.html',
   styleUrl: './man-clothes-page.component.css'
 })
-export class ManClothesPageComponent {
+export class ManClothesPageComponent implements OnInit {
 
   products$: Observable<Product[]>;
+  apiKey = 'http://localhost:3030/data/menClothes/';
 
   selectPriceFilter: string = 'low';
   selectColorFilter: string = 'all';
@@ -25,6 +27,10 @@ export class ManClothesPageComponent {
     this.products$ = this.productService.filteredProducts$;
   }
 
+  ngOnInit(): void {
+    this.productService.setApiKey(this.apiKey);
+  }
+  
   onPriceChange() {
     this.productService.setPriceFilter(this.selectPriceFilter );    
   }
