@@ -17,7 +17,7 @@ export const routes: Routes = [
     {path: "home", component: MainComponent},
     { path: 'home/details/:id', component:  DetailsComponent},
     { path: 'details/:section/:id', component:  DetailsComponent},
-    {path: 'edit/:section/:id', component: EditRecordComponent},
+    {path: 'edit/:section/:id', component: EditRecordComponent, canActivate: [userGuardsGuard]}, 
     {
         path: "clothes", 
         children: [

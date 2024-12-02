@@ -3,20 +3,34 @@ import { HttpClient } from '@angular/common/http';
 import { UserLogin } from '../interfaces/user-login';
 import { BehaviorSubject, tap } from 'rxjs';
 import { RegisterInfo } from '../interfaces/register-info';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
-  private user$$ = new BehaviorSubject<UserLogin | undefined>(undefined);
-  public user$ = this.user$$.asObservable();
+  private user$$ = new BehaviorSubject<UserLogin | null>(null);
+  private user$ = this.user$$.asObservable();
 
 
   USER_KEY:string ='[user]';
+  user: UserLogin | null = null;
 
+  constructor(private http: HttpClient) {
+    const savedUser = localStorage.getItem(this.USER_KEY);
+    if (savedUser) {
+      this.user$$.next(JSON.parse(savedUser));
+    }
 
-  constructor(private http: HttpClient) { }
+    this.user$.subscribe((data) => {
+      this.user = data;
+    });
+   }
 
+   
+  getUser$(): Observable<UserLogin | null> {
+    return this.user$;
+  }
 
   login(email:string, password: string){
 
@@ -24,8 +38,8 @@ export class UserAuthService {
    .post<UserLogin>('/users/login', {email, password})
    .pipe(tap(user =>{
     this.user$$.next(user);
+    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
    }));
-    // localStorage.setItem(this.USER_KEY, JSON.stringify(this.user));
   }
 
 
@@ -35,13 +49,15 @@ export class UserAuthService {
     .post<RegisterInfo>('/users/register', {email, firstName, lastName, password, country, city, profileImg})
     .pipe(tap(user =>{
       this.user$$.next(user);
+      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
     }));
 
   }
 
   logOut(){
 
-    this.user$$.next(undefined);
+    this.user$$.next(null);
+    localStorage.removeItem(this.USER_KEY);
     this.http.get('users/logout');
   }
 }
