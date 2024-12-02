@@ -16,8 +16,12 @@ export class RegisterPageComponent {
 
   registeForm = new FormGroup({
     email: new FormControl("", [Validators.required, emailValidator(this.domains)]),
-    username: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    firstName: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    lastName: new FormControl("",[Validators.required, Validators.minLength(3)]),
     password: new FormControl("",[Validators.required, Validators.minLength(5)]),
+    country: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    city: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    profileImg: new FormControl("",[Validators.required, Validators.minLength(3)]),
   })
 
 

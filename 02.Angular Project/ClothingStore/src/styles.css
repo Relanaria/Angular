@@ -5,7 +5,9 @@ body {
     background-color: rgb(228, 224, 225);
     width: 100%;
     font-family: "Signika", sans-serif;
+    height: 100vh;
 }
+
 *{
     margin: 0;
     padding: 0;
@@ -14,3 +16,4 @@ body {
 .error {
     color: red;
 }
+

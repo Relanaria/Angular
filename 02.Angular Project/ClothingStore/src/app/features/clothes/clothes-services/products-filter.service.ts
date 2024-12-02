@@ -16,13 +16,13 @@ export class ProductsFilterService {
   private colorFilter$ = new BehaviorSubject<string | null>('all');
 
   constructor(private httpClient: HttpClient) {
-    // Fetch products whenever API_KEY changes
+   
     this.apiKey$
       .pipe(
-        switchMap((apiKey) => this.httpClient.get<Product[]>(apiKey)) // Fetch data from the new API
+        switchMap((apiKey) => this.httpClient.get<Product[]>(apiKey)) 
       )
       .subscribe((data) => {
-        this.products$.next(data); // Update the products$ BehaviorSubject
+        this.products$.next(data); 
       });
   }
 
@@ -50,7 +50,7 @@ export class ProductsFilterService {
   );
 
   setApiKey(key: string) {
-    this.apiKey$.next(key); // Update the apiKey$ BehaviorSubject
+    this.apiKey$.next(key); 
   }
 
   setPriceFilter(price: string | null) {

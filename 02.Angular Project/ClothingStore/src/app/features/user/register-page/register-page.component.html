@@ -15,32 +15,53 @@
       name="email"
     />
     @if(registeForm.get('email')?.touched){
-        <div>
-          @if(registeForm.get('email')?.errors?.['required']){
-          <p class="error">Email is Required!</p>
-          } @if(registeForm.get('email')?.errors?.['emailValidator']){
-          <p class="error">Email is not Valid!</p>
-          }
-        </div>
-        }
-    <label for="username">Username:</label>
+    <div>
+      @if(registeForm.get('email')?.errors?.['required']){
+      <p class="error">Email is Required!</p>
+      } @if(registeForm.get('email')?.errors?.['emailValidator']){
+      <p class="error">Email is not Valid!</p>
+      }
+    </div>
+    }
+
+    <label for="firstname">Firstname:</label>
     <input
-      formControlName="username"
+      formControlName="firstName"
       class="register-input"
-      placeholder="Username"
+      placeholder="Firstname"
       type="text"
-      id="username"
-      name="username"
+      id="firstname"
+      name="firstname"
     />
-    @if(registeForm.get('username')?.touched){
-        <div>
-          @if(registeForm.get('username')?.errors?.['required']){
-          <p class="error">Username is Required!</p>
-          } @if(registeForm.get('username')?.errors?.['minlength']){
-          <p class="error">Username must be 3 chars long!</p>
-          }
-        </div>
-        }
+    @if(registeForm.get('firstName')?.touched){
+    <div>
+      @if(registeForm.get('firstName')?.errors?.['required']){
+      <p class="error">Firstname is Required!</p>
+      } @if(registeForm.get('firstName')?.errors?.['minlength']){
+      <p class="error">Firstname must be 3 chars long!</p>
+      }
+    </div>
+    }
+
+    <label for="lastname">Lastname:</label>
+    <input
+      formControlName="lastName"
+      class="register-input"
+      placeholder="Lastname"
+      type="text"
+      id="lastname"
+      name="lastname"
+    />
+    @if(registeForm.get('lastName')?.touched){
+    <div>
+      @if(registeForm.get('lastName')?.errors?.['required']){
+      <p class="error">Lastname is Required!</p>
+      } @if(registeForm.get('lastName')?.errors?.['minlength']){
+      <p class="error">Lastname must be 3 chars long!</p>
+      }
+    </div>
+    }
+
     <label for="password">Password:</label>
     <input
       formControlName="password"
@@ -51,14 +72,72 @@
       name="password"
     />
     @if(registeForm.get('password')?.touched){
-        <div>
-          @if(registeForm.get('password')?.errors?.['required']){
-          <p class="error">Password is Required!</p>
-          } @if(registeForm.get('password')?.errors?.['minlength']){
-          <p class="error">Password must be 5 chars long!</p>
-          }
-        </div>
-        }
+    <div>
+      @if(registeForm.get('password')?.errors?.['required']){
+      <p class="error">Password is Required!</p>
+      } @if(registeForm.get('password')?.errors?.['minlength']){
+      <p class="error">Password must be 5 chars long!</p>
+      }
+    </div>
+    }
+
+    <label for="country">Country:</label>
+    <input
+      formControlName="country"
+      class="register-input"
+      placeholder="Country"
+      type="country"
+      id="country"
+      name="country"
+    />
+    @if(registeForm.get('country')?.touched){
+    <div>
+      @if(registeForm.get('country')?.errors?.['required']){
+      <p class="error">Country is Required!</p>
+      } @if(registeForm.get('country')?.errors?.['minlength']){
+      <p class="error">Country must be 5 chars long!</p>
+      }
+    </div>
+    }
+
+    <label for="city">City:</label>
+    <input
+      formControlName="city"
+      class="register-input"
+      placeholder="City"
+      type="city"
+      id="city"
+      name="city"
+    />
+    @if(registeForm.get('city')?.touched){
+    <div>
+      @if(registeForm.get('city')?.errors?.['required']){
+      <p class="error">City is Required!</p>
+      } @if(registeForm.get('city')?.errors?.['minlength']){
+      <p class="error">City must be 5 chars long!</p>
+      }
+    </div>
+    }
+
+    <label for="profileImg">Profile Image:</label>
+    <input
+      formControlName="country"
+      class="register-input"
+      placeholder="Profile Img"
+      type="profileImg"
+      id="profileImg"
+      name="profileImg"
+    />
+    @if(registeForm.get('profileImg')?.touched){
+    <div>
+      @if(registeForm.get('profileImg')?.errors?.['required']){
+      <p class="error">Profile Image is Required!</p>
+      } @if(registeForm.get('profileImg')?.errors?.['minlength']){
+      <p class="error">Profile Image must be 5 chars long!</p>
+      }
+    </div>
+    }
+    
     <button type="submit">Register</button>
     <p class="register-login-p">
       Have an Account? Login
