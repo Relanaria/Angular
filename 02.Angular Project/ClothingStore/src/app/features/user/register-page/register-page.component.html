@@ -2,7 +2,7 @@
   <h2>Register</h2>
   <form
     [formGroup]="registeForm"
-    (submit)="handeFormSubmit($event)"
+    (submit)="registerSubmit()"
     class="register-form"
   >
     <label for="email">Email:</label>
@@ -121,7 +121,7 @@
 
     <label for="profileImg">Profile Image:</label>
     <input
-      formControlName="country"
+      formControlName="profileImg"
       class="register-input"
       placeholder="Profile Img"
       type="profileImg"

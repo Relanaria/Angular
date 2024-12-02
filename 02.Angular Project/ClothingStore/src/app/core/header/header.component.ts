@@ -10,10 +10,10 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
 
- loggedIn:boolean = true;
+ loggedIn:boolean = false;
 
 
- setLoggedIn() {
-  this.loggedIn = !this.loggedIn
- }
+//  setLoggedIn() {
+//   this.loggedIn = !this.loggedIn
+//  }
 }

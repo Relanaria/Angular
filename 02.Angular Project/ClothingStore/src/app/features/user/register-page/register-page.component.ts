@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DOMAINS } from '../../../constants';
 import { emailValidator } from '../../../utils/email.validator';
+import { UserAuthService } from '../user-auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -13,6 +14,10 @@ import { emailValidator } from '../../../utils/email.validator';
 })
 export class RegisterPageComponent {
   domains = DOMAINS
+
+  constructor(private userService: UserAuthService, private router: Router){
+
+  }
 
   registeForm = new FormGroup({
     email: new FormControl("", [Validators.required, emailValidator(this.domains)]),
@@ -25,11 +30,26 @@ export class RegisterPageComponent {
   })
 
 
-  handeFormSubmit(event: SubmitEvent):void {
+  registerSubmit():void {
     if(this.registeForm.invalid){
+      console.log(this.registeForm.value);
+      
       return;
     }
-    console.log(this.registeForm.value);
-    this.registeForm.reset();
+ 
+    const {
+      email,
+      firstName,
+      lastName,
+      password,
+      country,
+      city,
+      profileImg,
+    } = this.registeForm.value;
+
+
+    this.userService.register(email!, firstName!, lastName!, password!, country!, city!, profileImg!).subscribe(() =>{
+      this.router.navigate(['/home'])
+    })
   }
 }
