@@ -24,6 +24,7 @@
         }
       </div>
       }
+
       <label for="price">Price:</label>
       <input
         formControlName="price"
@@ -32,7 +33,9 @@
         type="number"
         id="price"
         name="password"
+        value="{{productInfo?.price}}"
       />
+
       <label for="size">Size:</label>
       <input
         formControlName="size"
@@ -41,7 +44,28 @@
         type="text"
         id="size"
         name="size"
+        value="{{productInfo?.size}}"
       />
+
+      <label for="color">Color:</label>
+      <input
+        formControlName="color"
+        class="edit-product-input"
+        placeholder="Color"
+        type="text"
+        id="color"
+        name="color"
+      />
+      @if(editProductForm.get('color')?.touched){
+      <div>
+        @if(editProductForm.get('color')?.errors?.['required']){
+        <p class="error">Color name is Required!</p>
+        } @if(editProductForm.get('color')?.errors?.['minlength']){
+        <p class="error">Minimum length is 3 chars!</p>
+        }
+      </div>
+      }
+
       <label for="imgURL">Image URL:</label>
       <input
         formControlName="imgURL"
@@ -50,10 +74,14 @@
         type="text"
         id="imgURL"
         name="imgURL"
+        value="{{productInfo?.imgURL}}"
       />
       <button type="submit">Submit</button>
     </form>
+
     <div class="form-preview">
+      <h1>Product Preview</h1>
+      <hr>
       <div class="img-container">
         <img
           class="form-img-preview"
@@ -62,8 +90,9 @@
         />
       </div>
       <h1>ProductName:{{ editProductForm.value.productName }}</h1>
-      <p>Price: {{ editProductForm.value.price }}$.</p>
-      <p>Size: {{ editProductForm.value.size }}.</p>
+      <p>Price: {{ editProductForm.value.price }}$</p>
+      <p>Size: {{ editProductForm.value.size }}</p>
+      <p>Color: {{editProductForm.value.color}}</p>
     </div>
   </div>
 </div>

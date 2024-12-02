@@ -28,6 +28,9 @@ export class WomanClothesPageComponent {
 
   ngOnInit(): void {
     this.productService.setApiKey(this.apiKey);
+    this.productService.setPriceFilter(this.selectPriceFilter );    
+    this.productService.setSizeFilter(this.selectSizeFilter);
+    this.productService.setColorFilter(this.selectColorFilter);
   }
   
   onPriceChange() {

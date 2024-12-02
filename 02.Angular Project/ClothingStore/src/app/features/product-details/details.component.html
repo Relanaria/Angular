@@ -1,0 +1,21 @@
+<div class="products-wrapper" *ngIf="productData">
+  <div class="product-card">
+    <div class="img-wrapper">
+      <img
+        class="product-img"
+        [src]="productData.imgURL"
+        alt="Clothe Img"
+      />
+    </div>
+    <h2>{{ productData.title }}</h2>
+    <p>Price: {{ productData.price }}$.</p>
+    <p>Size: {{ productData.size }}.</p>
+    <p>Color: {{ productData.color }}.</p>
+
+    <div class="btn-container">
+      <button class="details-btn">Like</button>
+      <a routerLink="/edit/{{section}}/{{ productData._id }}" class="details-btn">EDIT</a>
+      <button class="details-btn">DELETE</button>
+    </div>
+  </div>
+</div>

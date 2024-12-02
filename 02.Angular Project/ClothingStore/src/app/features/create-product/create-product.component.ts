@@ -15,6 +15,7 @@ export class CreateProductComponent {
     productName: new FormControl("",[Validators.required, Validators.minLength(3)]),
     size: new FormControl("", [Validators.required, Validators.minLength(3)]),
     price: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    color: new FormControl("", [Validators.required, Validators.minLength(3)]),
     imgURL: new FormControl("", [Validators.required, Validators.minLength(3)]),
   })
 

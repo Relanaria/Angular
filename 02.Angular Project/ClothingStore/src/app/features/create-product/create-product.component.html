@@ -61,6 +61,27 @@
           }
         </div>
         }
+
+        <label for="color">Color:</label>
+      <input
+        formControlName="color"
+        class="create-product-input"
+        placeholder="Color"
+        type="text"
+        id="color"
+        name="color"
+      />
+      @if(createProductForm.get('color')?.touched){
+        <div>
+          @if(createProductForm.get('color')?.errors?.['required']){
+          <p class="error">Color is Required!</p>
+          } @if(createProductForm.get('color')?.errors?.['minlength']){
+          <p class="error">Minimum length is 3 chars!</p>
+          }
+        </div>
+        }
+
+
       <label for="imgURL">Image URL:</label>
       <input
         formControlName="imgURL"
@@ -82,6 +103,7 @@
       <button type="submit">Submit</button>
     </form>
     <div class="form-preview">
+      <h1>Product Preview</h1>
       <div class="img-container">
         <img
           class="form-img-preview"
@@ -92,6 +114,8 @@
       <h1>ProductName:{{ createProductForm.value.productName }}</h1>
       <p>Price: {{ createProductForm.value.price }}$.</p>
       <p>Size: {{ createProductForm.value.size }}.</p>
+      <p>Color: {{createProductForm.value.color}}</p>
+
     </div>
   </div>
 </div>

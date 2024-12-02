@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class DetailsComponent implements OnInit {
   id: string;
   section: string;
-  personData:any | null = null;
+  productData:any | null = null;
 
   constructor(
     private route: ActivatedRoute, 
@@ -25,7 +25,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct.getOneProduct(this.id, this.section).subscribe(data =>{
-      this.personData = data;
+      this.productData = data;
     })
   }
   

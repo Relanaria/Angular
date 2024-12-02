@@ -7,15 +7,17 @@ import { WomanClothesPageComponent } from './features/clothes/woman-clothes-page
 import { KidsClothesPageComponent } from './features/clothes/kids-clothes-page/kids-clothes-page.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import { ProfilePageComponent } from './features/user/profile-page/profile-page.component';
-import { CreateProductComponent } from './features/main-page/create-product/create-product.component';
-import { DetailsComponent } from './features/main-page/product-details/details.component';
+import { CreateProductComponent } from './features/create-product/create-product.component';
+import { DetailsComponent } from './features/product-details/details.component';
 import { userGuardsGuard } from './guards/user-guards.guard';
+import { EditRecordComponent } from './features/edit-record/edit-record.component';
 
 export const routes: Routes = [
     {path: "", redirectTo: "/home", pathMatch: "full"},
     {path: "home", component: MainComponent},
     { path: 'home/details/:id', component:  DetailsComponent},
     { path: 'details/:section/:id', component:  DetailsComponent},
+    {path: 'edit/:section/:id', component: EditRecordComponent},
     {
         path: "clothes", 
         children: [
@@ -26,7 +28,7 @@ export const routes: Routes = [
     },
     {
         path:"create-product", 
-        component:CreateProductComponent,
+        component: CreateProductComponent,
         canActivate: [userGuardsGuard]
     },
     {

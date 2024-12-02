@@ -21,7 +21,7 @@ button:hover{
    cursor: pointer;
 }
 
-.edit-product-input{
+.create-product-input{
     background-color: rgb(228, 224, 225);
     padding: 1em 1em;
     margin-bottom: 1em;
@@ -29,7 +29,7 @@ button:hover{
     border: none;
 }
 
-.edit-product-container{
+.create-product-container{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,7 +49,7 @@ button:hover{
     font-size: 1.25rem;
 }
 
-.edit-product-form{
+.create-product-form{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,7 +65,7 @@ button:hover{
     border-radius: 1em;
     width: 500px;
     height: 300px;
-    margin-bottom: 1em;
+    margin: 1em 0em;
 }
 .img-container img {
     max-width: 100%;
