@@ -4,11 +4,20 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
   const API_CLOTHES = 'http://localhost:3030/data';
   const URL_START_CLOTHES = '/data';
 
+  const API_USER = 'http://localhost:3030/users';
+  const URL_START_USER = '/users';
+
   if(req.url.startsWith(URL_START_CLOTHES)){
     console.log(req.url);
-    
     req = req.clone({
       url: req.url.replace(URL_START_CLOTHES, API_CLOTHES)
+    })
+  }
+
+  if(req.url.startsWith(URL_START_USER)){
+    console.log(req.url);
+    req = req.clone({
+      url: req.url.replace(URL_START_USER, API_USER)
     })
   }
   

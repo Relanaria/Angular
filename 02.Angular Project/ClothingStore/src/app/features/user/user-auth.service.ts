@@ -22,7 +22,7 @@ export class UserAuthService {
   login(email:string, password: string){
 
    return this.http
-   .post<UserLogin>('http://localhost:3030/users/login', {email, password})
+   .post<UserLogin>('/users/login', {email, password})
    .pipe(tap(user =>{
     this.user$$.next(user);
    }));
@@ -34,7 +34,7 @@ export class UserAuthService {
   register(email:string, firstName: string, lastName:string, password: string, country: string, city: string, profileImg: string){
 
     return this.http
-    .post<RegisterInfo>('http://localhost:3030/users/register', {email, firstName, lastName, password, country, city, profileImg})
+    .post<RegisterInfo>('/users/register', {email, firstName, lastName, password, country, city, profileImg})
     .pipe(tap(user =>{
       this.user$$.next(user);
     }));

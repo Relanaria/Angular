@@ -6,7 +6,7 @@ import { Product } from '../interfaces/product.interface';
   providedIn: 'root'
 })
 export class EditRecordService {
-  apiURL = 'http://localhost:3030/data/';
+  apiURL = '/data/';
 
   constructor(private http: HttpClient) { }
 
