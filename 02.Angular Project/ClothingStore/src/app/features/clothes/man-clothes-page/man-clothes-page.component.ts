@@ -17,7 +17,7 @@ import { OnInit } from '@angular/core';
 export class ManClothesPageComponent implements OnInit {
 
   products$: Observable<Product[]>;
-  apiKey = 'http://localhost:3030/data/menClothes/';
+  apiKey = '/data/menClothes/';
 
   selectPriceFilter: string = 'low';
   selectColorFilter: string = 'all';

@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class KidsClothesPageComponent {
   
   products$: Observable<Product[]>;
-  apiKey = 'http://localhost:3030/data/kidsClothes/';
+  apiKey = '/data/kidsClothes/';
 
   selectPriceFilter: string = 'low';
   selectColorFilter: string = 'all';
