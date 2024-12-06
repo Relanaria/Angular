@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductServiceService } from './product-service.service';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
   id: string;
   section: string;
   productData:any | null = null;
@@ -29,5 +29,8 @@ export class DetailsComponent implements OnInit {
     })
   }
   
+  ngOnDestroy(): void {
+    return;
+  }
   
 }
