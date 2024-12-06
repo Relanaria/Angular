@@ -6,7 +6,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 import { RouterStateSnapshot } from '@angular/router';
 
 export const userGuardsGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-  console.log({ route, state });
+  // console.log({ route, state });
 
   const userService = inject(UserAuthService);
   const router = inject(Router);

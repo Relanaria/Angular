@@ -6,24 +6,26 @@
       (submit)="handeFormSubmit($event)"
       class="create-product-form"
     >
-      <label for="productName">Product Name:</label>
+      <label for="title">Product Name:</label>
       <input
-        formControlName="productName"
+        formControlName="title"
         class="create-product-input"
         placeholder="Product Name"
         type="text"
-        id="productName"
-        name="productName"
+        id="title"
+        name="title"
       />
-      @if(createProductForm.get('productName')?.touched){
+      @if(createProductForm.get('title')?.touched){
         <div>
-          @if(createProductForm.get('productName')?.errors?.['required']){
+          @if(createProductForm.get('title')?.errors?.['required']){
           <p class="error">ProductName is Required!</p>
-          } @if(createProductForm.get('productName')?.errors?.['minlength']){
+          } @if(createProductForm.get('title')?.errors?.['minlength']){
           <p class="error">Minimum length is 3 chars!</p>
           }
         </div>
         }
+
+
       <label for="price">Price:</label>
       <input
         formControlName="price"
@@ -33,7 +35,6 @@
         id="price"
         name="price"
       />
-
       @if(createProductForm.get('price')?.touched){
         <div>
           @if(createProductForm.get('price')?.errors?.['required']){
@@ -100,6 +101,21 @@
           }
         </div>
         }
+
+        
+      <label for="section">Chose Sectioin</label>
+      <select name="section" id="section" formControlName="section">
+        <option value="menClothes">Mens</option>
+        <option value="womanClothes">Women</option>
+        <option value="kidsClothes">Kids</option>
+      </select>
+      @if(createProductForm.get('section')?.touched){
+        <div>
+          @if(createProductForm.get('section')?.errors?.['required']){
+          <p class="error">Section is Required!</p>
+          }
+        </div>
+        }
       <button type="submit">Submit</button>
     </form>
     <div class="form-preview">
@@ -111,7 +127,7 @@
           alt="Product Preview"
         />
       </div>
-      <h1>ProductName:{{ createProductForm.value.productName }}</h1>
+      <h1>ProductName:{{ createProductForm.value.title }}</h1>
       <p>Price: {{ createProductForm.value.price }}$.</p>
       <p>Size: {{ createProductForm.value.size }}.</p>
       <p>Color: {{createProductForm.value.color}}</p>

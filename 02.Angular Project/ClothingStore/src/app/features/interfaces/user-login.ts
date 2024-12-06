@@ -6,4 +6,5 @@ export interface UserLogin {
     country: string,
     city: string,
     profileImg: string
+    accessToken: string;
 }

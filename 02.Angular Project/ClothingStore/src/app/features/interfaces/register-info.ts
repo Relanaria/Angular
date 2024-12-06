@@ -5,5 +5,7 @@ export interface RegisterInfo {
     password: string,
     country: string,
     city: string,
-    profileImg: string
+    profileImg: string,
+    accessToken: string;
+
 }
