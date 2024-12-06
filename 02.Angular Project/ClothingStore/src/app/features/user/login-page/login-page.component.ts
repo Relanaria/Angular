@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { DOMAINS } from '../../../constants';
 import { emailValidator } from '../../../utils/email.validator';
+import { UserAuthService } from '../user-auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -25,13 +26,17 @@ export class LoginPageComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private userService: UserAuthService){}
 
-  handleSubmit(): void {
+  loginSubmit(): void {
     if(this.loginForm.invalid){
       return;
     }
-    console.log(this.loginForm.value);
-    this.loginForm.reset();
+
+    const {email, password} = this.loginForm.value;
+
+    this.userService.login(email!, password!).subscribe(()=> {
+      this.router.navigate(['/home']);
+    });
   }
 }

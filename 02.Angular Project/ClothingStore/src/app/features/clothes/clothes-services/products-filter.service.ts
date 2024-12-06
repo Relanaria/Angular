@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductsFilterService {
   private products$ = new BehaviorSubject<Product[]>([]);
-  private apiKey$ = new BehaviorSubject<string>('http://localhost:3030/data/menClothes/');
+  private apiKey$ = new BehaviorSubject<string>('/data/menClothes/');
 
   private priceFilter$ = new BehaviorSubject<string | null>('low');
   private sizeFilter$ = new BehaviorSubject<string | null>('all');

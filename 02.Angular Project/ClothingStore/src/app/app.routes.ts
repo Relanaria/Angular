@@ -12,12 +12,14 @@ import { DetailsComponent } from './features/product-details/details.component';
 import { userGuardsGuard } from './guards/user-guards.guard';
 import { EditRecordComponent } from './features/edit-record/edit-record.component';
 
+//toLazyLoad All Other components
+
 export const routes: Routes = [
     {path: "", redirectTo: "/home", pathMatch: "full"},
     {path: "home", component: MainComponent},
     { path: 'home/details/:id', component:  DetailsComponent},
     { path: 'details/:section/:id', component:  DetailsComponent},
-    {path: 'edit/:section/:id', component: EditRecordComponent},
+    {path: 'edit/:section/:id', component: EditRecordComponent, canActivate: [userGuardsGuard]}, 
     {
         path: "clothes", 
         children: [
@@ -27,8 +29,8 @@ export const routes: Routes = [
         ]
     },
     {
-        path:"create-product", 
-        component: CreateProductComponent,
+        path:"create-product",
+        loadComponent: () =>import('./features/create-product/create-product.component').then(c => c.CreateProductComponent) ,
         canActivate: [userGuardsGuard]
     },
     {
