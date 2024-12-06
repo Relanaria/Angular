@@ -10,6 +10,15 @@ export interface Product {
 }
 
 
+export interface FormCreateProduct{
+    title: string,
+    price: number,
+    color: string,
+    size: string,
+    imgURL: string,
+    section: string
+}
+
 export interface CreatedProduct {
     title: string,
     price: number,

@@ -6,20 +6,20 @@
       (submit)="handeFormSubmit($event)"
       class="edit-product-form"
     >
-      <label for="productName">Product Name:</label>
+      <label for="title">Product Name:</label>
       <input
-        formControlName="productName"
+        formControlName="title"
         class="edit-product-input"
         placeholder="Product Name"
         type="text"
-        id="productName"
-        name="productName"
+        id="title"
+        name="title"
       />
-      @if(editProductForm.get('productName')?.touched){
+      @if(editProductForm.get('title')?.touched){
       <div>
-        @if(editProductForm.get('productName')?.errors?.['required']){
+        @if(editProductForm.get('title')?.errors?.['required']){
         <p class="error">ProductName is Required!</p>
-        } @if(editProductForm.get('productName')?.errors?.['minlength']){
+        } @if(editProductForm.get('title')?.errors?.['minlength']){
         <p class="error">Minimum length is 3 chars!</p>
         }
       </div>
@@ -89,7 +89,7 @@
           alt="Product Preview"
         />
       </div>
-      <h1>ProductName:{{ editProductForm.value.productName }}</h1>
+      <h1>ProductName:{{ editProductForm.value.title }}</h1>
       <p>Price: {{ editProductForm.value.price }}$</p>
       <p>Size: {{ editProductForm.value.size }}</p>
       <p>Color: {{editProductForm.value.color}}</p>

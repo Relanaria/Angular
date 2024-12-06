@@ -7,8 +7,7 @@ import {
 } from '@angular/forms';
 import { CreateProductService } from './create-product.service';
 import { Router } from '@angular/router';
-import { Product } from '../interfaces/product.interface';
-import { CreatedProduct } from '../interfaces/product.interface';
+import { FormCreateProduct } from '../interfaces/product.interface';
 
 
 @Component({
@@ -19,7 +18,6 @@ import { CreatedProduct } from '../interfaces/product.interface';
   styleUrl: './create-product.component.css',
 })
 export class CreateProductComponent {
-  newProduct: CreatedProduct | null = null;
 
   constructor (private productService: CreateProductService, private router: Router){
   }

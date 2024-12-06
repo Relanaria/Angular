@@ -1,16 +1,40 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from '../interfaces/product.interface';
+import { CreatedProduct, Product } from '../interfaces/product.interface';
+import { UserAuthService } from '../user/user-auth.service';
+import { UserLogin } from '../interfaces/user-login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EditRecordService {
   apiURL = '/data/';
+  body = {};
+  options = {};
+  userInfo: UserLogin | null = null;
+  
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,  private userService: UserAuthService) { 
+    this.userService.getUser$().subscribe((data) => {
+      this.userInfo = data;
+    });
+  }
 
   getOneProduct(id:string, section:string){
     return this.http.get<Product>(this.apiURL + `${section}/` + id);
+  }
+
+
+  editProduct(title: string | undefined | null, price: string | undefined | null, color:string | undefined | null, size:string | undefined | null, imgURL:string | undefined | null, section:string, _id:string) {
+    this.body = JSON.stringify({title, price, color, size, imgURL, section})
+    this.options = {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Authorization': this.userInfo?.accessToken
+      }
+    }
+    console.log(this.userInfo?.accessToken);
+    
+    return this.http.put<CreatedProduct>(this.apiURL + section + `/${_id}`, this.body, this.options);
   }
 }

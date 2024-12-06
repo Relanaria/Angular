@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EditRecordService } from './edit-record.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../interfaces/product.interface';
 
 @Component({
@@ -19,15 +19,16 @@ export class EditRecordComponent implements OnInit{
 
   constructor(
     private editService: EditRecordService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ){
     this.id = this.route.snapshot.params['id'];
     this.section = this.route.snapshot.params['section'];
   }
   
   editProductForm = new FormGroup({
-    productName: new FormControl("",[Validators.required, Validators.minLength(3)]),
-    size: new FormControl("", [Validators.required, Validators.minLength(3)]),
+    title: new FormControl("",[Validators.required, Validators.minLength(3)]),
+    size: new FormControl("", [Validators.required, Validators.minLength(1)]),
     price: new FormControl("", [Validators.required, Validators.minLength(3)]),
     color: new FormControl("", [Validators.required, Validators.minLength(3)]),
     imgURL: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -35,10 +36,9 @@ export class EditRecordComponent implements OnInit{
 
   ngOnInit(): void {
     this.editService.getOneProduct(this.id, this.section).subscribe((data) =>{
-      console.log(data);
       this.productInfo = data;
       this.editProductForm.patchValue({
-        productName: data.title,
+        title: data.title,
         size: data.size,
         price: data.price.toString(),
         color: data.color,
@@ -48,10 +48,18 @@ export class EditRecordComponent implements OnInit{
   }
 
   handeFormSubmit(event: SubmitEvent):void {
+    const {title, size, price, color, imgURL} = this.editProductForm.value
+
     if(this.editProductForm.invalid){
+      console.log('Invalid');
+      console.log(this.editProductForm.errors);
+      
       return;
     }
-    console.log(this.editProductForm.value);
+
+    this.editService.editProduct( title, price, color, size, imgURL, this.section, this.id).subscribe(data => {
+      this.router.navigate([`/details/${this.section}/${data._id}`])
+    })
   }
 
 }
