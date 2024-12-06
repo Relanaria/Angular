@@ -57,7 +57,7 @@ export class EditRecordComponent implements OnInit{
       return;
     }
 
-    this.editService.editProduct( title, price, color, size, imgURL, this.section, this.id).subscribe(data => {
+    this.editService.editProduct( title!, price!, color!, size!, imgURL!, this.section, this.id).subscribe(data => {
       this.router.navigate([`/details/${this.section}/${data._id}`])
     })
   }

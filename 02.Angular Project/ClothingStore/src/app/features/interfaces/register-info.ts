@@ -7,5 +7,5 @@ export interface RegisterInfo {
     city: string,
     profileImg: string,
     accessToken: string;
-
+    _id: string;
 }

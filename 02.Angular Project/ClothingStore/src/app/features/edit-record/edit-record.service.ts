@@ -25,7 +25,7 @@ export class EditRecordService {
   }
 
 
-  editProduct(title: string | undefined | null, price: string | undefined | null, color:string | undefined | null, size:string | undefined | null, imgURL:string | undefined | null, section:string, _id:string) {
+  editProduct(title: string , price: string, color:string, size:string , imgURL:string , section:string, _id:string) {
     this.body = JSON.stringify({title, price, color, size, imgURL, section})
     this.options = {
       headers: {
