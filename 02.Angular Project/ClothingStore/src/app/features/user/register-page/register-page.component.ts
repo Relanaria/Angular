@@ -13,7 +13,8 @@ import { UserAuthService } from '../user-auth.service';
   styleUrl: './register-page.component.css'
 })
 export class RegisterPageComponent {
-  domains = DOMAINS
+  domains = DOMAINS;
+  errorMessage = '';
 
   constructor(private userService: UserAuthService, private router: Router){
 
@@ -48,8 +49,21 @@ export class RegisterPageComponent {
     } = this.registeForm.value;
 
 
-    this.userService.register(email!, firstName!, lastName!, password!, country!, city!, profileImg!).subscribe(() =>{
-      this.router.navigate(['/home'])
-    })
+    this.userService.register(email!, firstName!, lastName!, password!, country!, city!, profileImg!).subscribe(
+      {
+        next: (response) => {
+          this.router.navigate(['/home'])
+        },
+        error: (error) =>{
+          console.log(error);
+          
+          if(error.status === 403 || error.status === 401){
+            this.errorMessage = error.message;
+          }
+        },
+        complete: () => {
+          console.log('completed');
+        },
+      })
   }
 }

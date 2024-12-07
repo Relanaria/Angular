@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/product.interface';
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,10 @@ export class ProductServiceService {
         'X-Authorization': accessToken
       }
     }
-    return this.http.delete(this.apiURL + section + `/${productId}`, this.options);
+    return this.http.delete(this.apiURL + section + `/${productId}`, this.options).pipe(
+      catchError((error) => {
+        return throwError(() => error); // Re-throw if you want to propagate the error
+      })
+    )
   }
 }

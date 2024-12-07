@@ -20,6 +20,7 @@ import { UserAuthService } from '../user-auth.service';
 
 export class LoginPageComponent {
   domains = DOMAINS
+  errorMessage = ''
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, emailValidator(this.domains)]),
@@ -35,8 +36,19 @@ export class LoginPageComponent {
 
     const {email, password} = this.loginForm.value;
 
-    this.userService.login(email!, password!).subscribe(()=> {
-      this.router.navigate(['/home']);
+    this.userService.login(email!, password!).subscribe({
+      next: (response) => {
+        this.router.navigate(['/home']);
+      },
+      error: (error) =>{
+        console.log(error);
+        if(error.status === 403 || error.status === 401){
+          this.errorMessage = error.error.message;          
+        }
+      },
+      complete: () => {
+        console.log('completed');
+      },
     });
   }
 }

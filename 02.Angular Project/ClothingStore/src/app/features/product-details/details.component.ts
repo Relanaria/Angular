@@ -19,6 +19,7 @@ import { Routes } from '../interfaces/routes.inderface';
 export class DetailsComponent implements OnInit, OnDestroy {
   private subscription!: Subscription;
 
+  errorMessage: string = '';
   id: string;
   section: string;
   productData:any | null = null;
@@ -45,15 +46,37 @@ export class DetailsComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
-    this.productService.getOneProduct(this.id, this.section).subscribe(data =>{
-      this.productData = data;
+    this.productService.getOneProduct(this.id, this.section).subscribe({
+      next: (response) => {
+       this.productData = response;
+      },
+      error: (error) =>{
+        if(error.status === 404){
+          this.errorMessage = error.message
+          this.router.navigate(['/home']);
+        }
+      },
     })
   }
 
   handleDelete(): void {
-    this.productService.deleteProduct(this.id, this.section, this.userData?.accessToken!).subscribe();
-    console.log('Item Deleter');
-    this.router.navigate([`/clothes/${(this.routesMatch as Routes)[this.section]}`])
+    this.productService.deleteProduct(this.id, this.section, this.userData?.accessToken!).subscribe({
+      next: (response) => {
+        console.log('Login successful!', response);
+        this.router.navigate([`/clothes/${(this.routesMatch as Routes)[this.section]}`])
+      },
+      error: (error) =>{
+        if(error.status === 403 || error.status === 401){
+          this.errorMessage = error.message;
+          this.userService.logOut();
+          this.router.navigate(['/login']);
+        }
+      },
+      complete: () => {
+        console.log('completed');
+      },
+    }
+    );
   }
   
   ngOnDestroy(): void {

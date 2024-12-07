@@ -8,6 +8,7 @@ import {
 import { CreateProductService } from './create-product.service';
 import { Router } from '@angular/router';
 import { FormCreateProduct } from '../interfaces/product.interface';
+import { UserAuthService } from '../user/user-auth.service';
 
 
 @Component({
@@ -18,8 +19,13 @@ import { FormCreateProduct } from '../interfaces/product.interface';
   styleUrl: './create-product.component.css',
 })
 export class CreateProductComponent {
+  errorMessage = '';
 
-  constructor (private productService: CreateProductService, private router: Router){
+  constructor (
+    private productService: CreateProductService,
+     private router: Router,
+     private userService: UserAuthService
+    ){
   }
 
   createProductForm = new FormGroup({
@@ -48,8 +54,21 @@ export class CreateProductComponent {
       return;
     }
     
-    this.productService.createProduct(this.createProductForm.value).subscribe(createProduct => {    
-      this.router.navigate([`/details/${createProduct.section}/${createProduct._id}`]);
-    });;
+    this.productService.createProduct(this.createProductForm.value).subscribe(
+      {
+        next: (response) => {
+          this.router.navigate([`/details/${response.section}/${response._id}`]);
+        },
+        error: (error) =>{
+          if(error.status === 403 || error.status === 401){
+            this.errorMessage = error.message;
+            this.userService.logOut();
+            this.router.navigate(['/login']);
+          }
+        },
+        complete: () => {
+          console.log('completed');
+        },
+      });
   }
 }

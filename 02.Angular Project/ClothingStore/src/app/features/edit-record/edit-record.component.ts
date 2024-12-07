@@ -3,6 +3,7 @@ import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { EditRecordService } from './edit-record.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../interfaces/product.interface';
+import { UserAuthService } from '../user/user-auth.service';
 
 @Component({
   selector: 'app-edit-record',
@@ -15,12 +16,14 @@ export class EditRecordComponent implements OnInit{
   id:string;
   section:string;
   productInfo: Product | undefined;
+  errorMessage = '';
 
 
   constructor(
     private editService: EditRecordService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private userService: UserAuthService
   ){
     this.id = this.route.snapshot.params['id'];
     this.section = this.route.snapshot.params['section'];
@@ -53,12 +56,23 @@ export class EditRecordComponent implements OnInit{
     if(this.editProductForm.invalid){
       console.log('Invalid');
       console.log(this.editProductForm.errors);
-      
       return;
     }
 
-    this.editService.editProduct( title!, price!, color!, size!, imgURL!, this.section, this.id).subscribe(data => {
-      this.router.navigate([`/details/${this.section}/${data._id}`])
+    this.editService.editProduct( title!, price!, color!, size!, imgURL!, this.section, this.id).subscribe({
+      next: (response) => {
+        this.router.navigate(['/details/', this.section, this.id])
+      },
+      error: (error) =>{
+        if(error.status === 403 || error.status === 401){
+          this.errorMessage = error.message;
+          this.userService.logOut();
+          this.router.navigate(['/login']);
+        }
+      },
+      complete: () => {
+        console.log('completed');
+      },
     })
   }
 
