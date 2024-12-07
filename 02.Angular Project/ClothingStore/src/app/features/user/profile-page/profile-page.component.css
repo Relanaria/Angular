@@ -43,7 +43,7 @@ button {
 }
 
 .profile-info-container {
-    width: 90%;
+    width: 100%;
     padding: 3em;
     margin: 2em 0em;
     display: flex;

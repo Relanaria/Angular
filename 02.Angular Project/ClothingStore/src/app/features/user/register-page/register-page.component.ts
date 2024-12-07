@@ -4,20 +4,27 @@ import { FormsModule, FormGroup, FormControl, ReactiveFormsModule, Validators } 
 import { DOMAINS } from '../../../constants';
 import { emailValidator } from '../../../utils/email.validator';
 import { UserAuthService } from '../user-auth.service';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [RouterLink, FormsModule, ReactiveFormsModule],
+  imports: [RouterLink, FormsModule, ReactiveFormsModule, ToastModule, ButtonModule, RippleModule],
   templateUrl: './register-page.component.html',
-  styleUrl: './register-page.component.css'
+  styleUrl: './register-page.component.css',
+  providers: [MessageService]
 })
 export class RegisterPageComponent {
   domains = DOMAINS;
   errorMessage = '';
 
-  constructor(private userService: UserAuthService, private router: Router){
-
+  constructor(
+    private userService: UserAuthService, 
+    private router: Router,
+    private messageService: MessageService){
   }
 
   registeForm = new FormGroup({
@@ -30,11 +37,14 @@ export class RegisterPageComponent {
     profileImg: new FormControl("",[Validators.required, Validators.minLength(3)]),
   })
 
-
   registerSubmit():void {
     if(this.registeForm.invalid){
       console.log(this.registeForm.value);
-      
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Invalid FormValues'
+      })
       return;
     }
  
@@ -52,13 +62,23 @@ export class RegisterPageComponent {
     this.userService.register(email!, firstName!, lastName!, password!, country!, city!, profileImg!).subscribe(
       {
         next: (response) => {
+          this.messageService.add({
+            severity: 'success', 
+            summary: 'Success', 
+            detail: 'Successfull registration!'
+          });
           this.router.navigate(['/home'])
         },
         error: (error) =>{
           console.log(error);
           
           if(error.status === 403 || error.status === 401){
-            this.errorMessage = error.message;
+            this.errorMessage = error.error.message;
+            this.messageService.add({
+              severity: 'error', 
+              summary: 'Error', 
+              detail: error.error.message
+            })
           }
         },
         complete: () => {

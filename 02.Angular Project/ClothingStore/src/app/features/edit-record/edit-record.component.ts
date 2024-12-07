@@ -4,13 +4,19 @@ import { EditRecordService } from './edit-record.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../interfaces/product.interface';
 import { UserAuthService } from '../user/user-auth.service';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-edit-record',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [ReactiveFormsModule, FormsModule, ToastModule, ButtonModule, RippleModule],
   templateUrl: './edit-record.component.html',
-  styleUrl: './edit-record.component.css'
+  styleUrl: './edit-record.component.css',
+  providers: [MessageService]
 })
 export class EditRecordComponent implements OnInit{
   id:string;
@@ -23,7 +29,8 @@ export class EditRecordComponent implements OnInit{
     private editService: EditRecordService,
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserAuthService
+    private userService: UserAuthService,
+    private messageService: MessageService
   ){
     this.id = this.route.snapshot.params['id'];
     this.section = this.route.snapshot.params['section'];
@@ -55,15 +62,29 @@ export class EditRecordComponent implements OnInit{
 
     if(this.editProductForm.invalid){
       console.log('Invalid');
-      console.log(this.editProductForm.errors);
+      this.messageService.add({
+        severity: 'error', 
+        summary: 'Error', 
+        detail: 'Invalid Form Values'
+      }) 
       return;
     }
 
     this.editService.editProduct( title!, price!, color!, size!, imgURL!, this.section, this.id).subscribe({
       next: (response) => {
         this.router.navigate(['/details/', this.section, this.id])
+        this.messageService.add({
+          severity: 'success', 
+          summary: 'Success', 
+          detail: 'Product was eddited successfully!'
+        }) 
       },
       error: (error) =>{
+        this.messageService.add({
+          severity: 'error', 
+          summary: 'Error', 
+          detail: error.error.message
+        }) 
         if(error.status === 403 || error.status === 401){
           this.errorMessage = error.message;
           this.userService.logOut();

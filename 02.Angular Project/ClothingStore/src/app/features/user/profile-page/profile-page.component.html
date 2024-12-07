@@ -2,15 +2,15 @@
     <div class="profile-wrapper">
 
         <img class="profile-side-img"
-        src="https://i.pinimg.com/736x/fb/0c/d8/fb0cd89bce0a2568cd12c1af2be34646.jpg"
-        alt=""
+        src="{{userData?.profileImg}}"
+        alt="Profile Pic"
         />
        
         <article>
             <section class="profile-picture">
                 <img
-                src="https://i.pinimg.com/736x/fb/0c/d8/fb0cd89bce0a2568cd12c1af2be34646.jpg"
-                alt=""
+                src="{{userData?.profileImg}}"
+                alt="ProfilePic"
                 />
                 <div>
                     <h1>Your Photo</h1>
@@ -22,26 +22,26 @@
                 <div class="siblings-sections">
                     <section class="input-section">
                         <label for="username">Username:</label>
-                        <input type="text" value="dobri" name="username" id="username" />
+                        <input type="text" value="{{userData?.firstName}}" name="username" id="username" />
                     </section>
                     <section class="input-section">
                         <label for="lastname">Last Name:</label>
-                        <input type="text" value="dobri" name="lastname" id="lastname" />
+                        <input type="text" value="{{userData?.lastName}}" name="lastname" id="lastname" />
                     </section>
                 </div>
                 <section class="input-section">
                     <label for="email">Email Adress:</label>
-                    <input type="email" value="someemail@abv.bg" name="email" id="email" />
+                    <input type="email" value="{{userData?.email}}" name="email" id="email" />
                 </section>
                 
                 <div class="siblings-sections">
                     <section class="input-section">
                         <label for="country">country:</label>
-                        <input type="text" value="country" name="country" id="country" />
+                        <input type="text" value="{{userData?.country}}" name="country" id="country" />
                     </section>
                     <section class="input-section">
                         <label for="city">City:</label>
-                        <input type="text" value="city" name="city" id="city" />
+                        <input type="text" value="{{userData?.city}}" name="city" id="city" />
                     </section>
                 </div>
             </div>
