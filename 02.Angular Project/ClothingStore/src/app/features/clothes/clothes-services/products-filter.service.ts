@@ -21,8 +21,10 @@ export class ProductsFilterService {
       .pipe(
         switchMap((apiKey) => this.httpClient.get<Product[]>(apiKey)) 
       )
-      .subscribe((data) => {
-        this.products$.next(data); 
+      .subscribe({
+        next: (response) =>{
+            this.products$.next(response); 
+        }
       });
   }
 

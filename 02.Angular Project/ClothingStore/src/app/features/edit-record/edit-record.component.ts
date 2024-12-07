@@ -69,6 +69,10 @@ export class EditRecordComponent implements OnInit{
           this.userService.logOut();
           this.router.navigate(['/login']);
         }
+        if(error.status === 404){
+          this.errorMessage = error.message
+          this.router.navigate(['/home']);
+        }
       },
       complete: () => {
         console.log('completed');
