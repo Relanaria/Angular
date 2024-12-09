@@ -6,14 +6,13 @@
 body {
     background-color: rgb(228, 224, 225);
     width: 100%;
-    font-family: "Signika", sans-serif;
+    font-family: "Signika", Arial, Helvetica, sans-serif;
     height: 100vh;
 }
 
 html, body {
     scroll-behavior: smooth;
 }
-
 
 *{
     margin: 0;

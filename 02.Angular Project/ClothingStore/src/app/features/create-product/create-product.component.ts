@@ -60,6 +60,8 @@ export class CreateProductComponent {
         summary: 'Error', 
         detail: 'Invalid Form Values'
       }) 
+      console.log('invalid');
+      
       return;
     }
     
