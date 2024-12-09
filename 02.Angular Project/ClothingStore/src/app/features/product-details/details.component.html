@@ -11,6 +11,7 @@
     <p>Price: {{ productData.price }}$.</p>
     <p>Size: {{ productData.size }}.</p>
     <p>Color: {{ productData.color }}.</p>
+    <p>Likes: {{numberOfLikes}}</p>
 
     <div class="btn-container">
       @if(!(productData._ownerId === userData?._id) && !likedByUser){

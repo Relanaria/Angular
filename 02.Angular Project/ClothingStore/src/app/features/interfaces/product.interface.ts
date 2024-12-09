@@ -7,6 +7,7 @@ export interface Product {
     _ownerId: string,
     _createdOn: number,
     _id: string
+    likes: [] | undefined;
 }
 
 

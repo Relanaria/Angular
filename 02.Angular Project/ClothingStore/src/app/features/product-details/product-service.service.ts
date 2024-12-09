@@ -28,14 +28,19 @@ export class ProductServiceService {
     return this.http.post(this.apiURL + `/likes`, {productId}, this.options)
   }
 
-  getLikes(ownerId: string){
+  getLikeByUser(ownerId: string){
     const encodedId = encodeURIComponent(ownerId);
-      return this.http.get<ProductLike>(this.apiURL + `likes?where=_ownerId%3D"${encodedId}"`)
+    return this.http.get<ProductLike>(this.apiURL + `likes?where=_ownerId%3D"${encodedId}"`)
+  }
+
+  getNumberOfLikes(productId: string){
+    const encodedId = encodeURIComponent(productId);
+    return this.http.get<ProductLike>(this.apiURL + `likes?where=productId%3D"${encodedId}"`)
   }
 
   getProductAndLike(id: string, section: string, ownerId: string, ) {
     const getProduct$ = this.getOneProduct(id, section);
-    const likeProduct$ = this.getLikes(ownerId);
+    const likeProduct$ = this.getLikeByUser(ownerId);
   
     return forkJoin([getProduct$, likeProduct$]).pipe(
       map(([product, likeResponse]) => {

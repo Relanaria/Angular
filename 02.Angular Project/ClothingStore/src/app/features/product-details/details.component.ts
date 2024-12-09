@@ -30,8 +30,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
     womanClothes: 'woman',
     menClothes: 'mens'
   }
-  likedByUser: boolean = false;
-
+  likedByUser = false;
+  numberOfLikes = 0;
 
   constructor(
     private route: ActivatedRoute, 
@@ -52,13 +52,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
   .subscribe({
     next: (result) => {
       this.productData = result.product;
-      
+      this.productService.getNumberOfLikes(this.productData._id).subscribe((data) =>{
+        this.numberOfLikes = data.length;
+      })
       this.likedByUser = result.likeResponse.some((likes: ProductLike) =>{
           return likes.productId === this.productData._id;
       });
-
-      console.log(this.likedByUser);
-      
     },
     error: (err) => {
       console.error('Error:', err);
@@ -69,6 +68,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   handleLike():void {
     this.productService.likeProduct(this.productData._id, this.userData?.accessToken!).subscribe(() =>{
       this.likedByUser = true;
+      this.numberOfLikes++;
     })
   }
 
