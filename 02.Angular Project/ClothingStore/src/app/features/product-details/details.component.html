@@ -14,7 +14,7 @@
     <p>Likes: {{numberOfLikes}}</p>
 
     <div class="btn-container">
-      @if(!(productData._ownerId === userData?._id) && !likedByUser){
+      @if(!(productData._ownerId === userData?._id) && !likedByUser && userData){
         <button class="details-btn" (click)="handleLike()">Like</button>
       }
       @if(userData?._id === productData._ownerId){
