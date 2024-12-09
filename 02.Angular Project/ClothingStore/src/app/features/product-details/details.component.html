@@ -13,7 +13,9 @@
     <p>Color: {{ productData.color }}.</p>
 
     <div class="btn-container">
-      <button class="details-btn">Like</button>
+      @if(!(productData._ownerId === userData?._id) && !likedByUser){
+        <button class="details-btn" (click)="handleLike()">Like</button>
+      }
       @if(userData?._id === productData._ownerId){
         <a routerLink="/edit/{{section}}/{{ productData._id }}" class="details-btn">EDIT</a>
         <button class="details-btn" (click)="handleDelete()">DELETE</button>

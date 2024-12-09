@@ -6,6 +6,7 @@ import { UserAuthService } from '../user/user-auth.service';
 import { Subscription } from 'rxjs';
 import { UserLogin } from '../interfaces/user-login';
 import { Routes } from '../interfaces/routes.inderface';
+import { ProductLike } from '../interfaces/product-likes.interface';
 
 
 
@@ -29,6 +30,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     womanClothes: 'woman',
     menClothes: 'mens'
   }
+  likedByUser: boolean = false;
 
 
   constructor(
@@ -46,16 +48,27 @@ export class DetailsComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit(): void {
-    this.productService.getOneProduct(this.id, this.section).subscribe({
-      next: (response) => {
-       this.productData = response;
-      },
-      error: (error) =>{
-        if(error.status === 404){
-          this.errorMessage = error.message
-          this.router.navigate(['/home']);
-        }
-      },
+    this.productService.getProductAndLike(this.id, this.section, this.userData?._id!)
+  .subscribe({
+    next: (result) => {
+      this.productData = result.product;
+      
+      this.likedByUser = result.likeResponse.some((likes: ProductLike) =>{
+          return likes.productId === this.productData._id;
+      });
+
+      console.log(this.likedByUser);
+      
+    },
+    error: (err) => {
+      console.error('Error:', err);
+    }
+  });
+  }
+
+  handleLike():void {
+    this.productService.likeProduct(this.productData._id, this.userData?.accessToken!).subscribe(() =>{
+      this.likedByUser = true;
     })
   }
 
