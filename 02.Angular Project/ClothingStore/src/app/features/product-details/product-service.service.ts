@@ -58,7 +58,7 @@ export class ProductServiceService {
     }
     return this.http.delete(this.apiURL + section + `/${productId}`, this.options).pipe(
       catchError((error) => {
-        return throwError(() => error); // Re-throw if you want to propagate the error
+        return throwError(() => error); 
       })
     )
   }

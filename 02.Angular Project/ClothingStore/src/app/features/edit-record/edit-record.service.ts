@@ -33,7 +33,6 @@ export class EditRecordService {
         'X-Authorization': this.userInfo?.accessToken
       }
     }
-    console.log(this.userInfo?.accessToken);
     
     return this.http.put<CreatedProduct>(this.apiURL + section + `/${_id}`, this.body, this.options);
   }
